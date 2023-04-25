@@ -1,11 +1,7 @@
 ---
-title: "我的 GitHub 站点"
+title: "第一篇文章"
 date: 2023-04-13T15:05:22+08:00
-draft: true
+draft: false
 ---
 
-## Introduction
-
-This is **bold** text, and this is *emphasized* text.
-
-Visit the [Hugo](https://gohugo.io) website!
+# 想只有困难，做才有答案
