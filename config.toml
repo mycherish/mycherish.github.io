@@ -1,7 +1,6 @@
 baseURL = 'https://mycherish.github.io/'
 title = '我的 Hugo 站点'
 theme = "LoveIt"
-themesDir = "../xtools/themes"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
 # language name ["English", "简体中文", "Français", "Polski", ...]
