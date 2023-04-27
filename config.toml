@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = '我的 Hugo 站点'
+title = '读者的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
@@ -27,7 +27,7 @@ enableEmoji = true
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 [author]
-  name = "读者电台"
+  name = "读者"
   email = "determined_xw@126.com"
   link = "about"
 
@@ -87,7 +87,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     mobileMode = "auto"
     # 页面头部导航栏标题配置
     [params.header.title]
-      # URL of the LOGO
       # LOGO 的 URL
       logo = ""
       # 标题名称
@@ -102,25 +101,19 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 页面底部信息配置
   [params.footer]
     enable = true
-    # Custom content (HTML format is supported)
     # 自定义内容 (支持 HTML 格式)
     custom = ""
-    # whether to show Hugo and theme info
     # 是否显示 Hugo 和主题信息
     hugo = true
-    # whether to show copyright info
     # 是否显示版权信息
     copyright = true
-    # whether to show the author
     # 是否显示作者
     author = true
-    # site creation time
     # 网站创立年份
     since = 2023
     # ICP info only in China (HTML format is supported)
     # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
     icp = ""
-    # license info (HTML format is supported)
     # 许可协议信息 (支持 HTML 格式)
     license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 
@@ -135,13 +128,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # List (目录或标签) 页面配置
   [params.list]
-    # special amount of posts in each list page
     # list 页面每页显示文章数量
     paginate = 20
-    # date format (month and day)
     # 日期格式 (月和日)
     dateFormat = "01-02"
-    # amount of RSS pages
     # RSS 文章数目
     rss = 10
 
@@ -170,19 +160,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # max index length of the chunked content
     # 文章内容最长索引长度
     contentLength = 4000
-    # placeholder of the search bar
     # 搜索框的占位提示语
     placeholder = ""
-    # max number of results length
     # 最大结果数目
     maxResultLength = 10
-    # snippet length of the result
     # 结果内容片段长度
     snippetLength = 30
-    # HTML tag name of the highlight part in results
     # 搜索结果中高亮部分的 HTML 标签
     highlightTag = "em"
-    # whether to use the absolute URL based on the baseURL in search index
     # 是否在搜索索引中使用基于 baseURL 的绝对路径
     absoluteURL = false
     [params.search.algolia]
@@ -290,7 +275,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     Plume = ""
     HackTheBox = ""
     RootMe= ""
-    Email = "weidongxu2@gmail.com"
+    Email = "determined_xw@126.com"
     RSS = ""
 
   # 文章页面全局配置
@@ -382,7 +367,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Skype = false
       Trello = false
       Mix = false
-    # Comment config
     # 评论系统设置
     [params.page.comment]
       enable = true
@@ -468,7 +452,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # giscus comment config (https://giscus.app/)
       # giscus comment 评论系统设置 (https://giscus.app/zh-CN)
       [params.page.comment.giscus]
-        # You can refer to the official documentation of giscus to use the following configuration.
         # 你可以参考官方文档来使用下列配置
         enable = false
         repo = ""
@@ -485,7 +468,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         lazyLoading = false
         lightTheme = "light"
         darkTheme = "dark"
-    # Third-party library config
     # 第三方库配置
     [params.page.library]
       [params.page.library.css]
@@ -498,7 +480,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         # located in "assets/" 位于 "assets/"
         # Or 或者
         # someJavascript = "https://cdn.example.com/some.js"
-    # Page SEO config
     # 页面 SEO 配置
     [params.page.seo]
       # image URL
@@ -535,7 +516,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     pinterest = ""
     baidu = ""
 
-  # Site SEO config
   # 网站 SEO 配置
   [params.seo]
     # image URL
@@ -545,7 +525,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # 缩略图 URL
     thumbnailUrl = "/images/screenshot.png"
 
-  # Analytics config
   # 网站分析配置
   [params.analytics]
     enable = false
@@ -568,7 +547,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.analytics.yandexMetrica]
       id = ""
 
-  # Cookie consent config
   # Cookie 许可配置
   [params.cookieconsent]
     enable = false
@@ -579,7 +557,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       dismiss = ""
       link = ""
 
-  # CDN config for third-party library files
   # 第三方库文件的 CDN 设置
   [params.cdn]
     # CDN data file name, disabled by default
@@ -644,13 +621,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   filename = "sitemap.xml"
   priority = 0.5
 
-# Permalinks config (https://gohugo.io/content-management/urls/#permalinks)
 # Permalinks 配置 (https://gohugo.io/content-management/urls/#permalinks)
 [Permalinks]
   # posts = ":year/:month/:filename"
   posts = ":filename"
 
-# Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
 # 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
   # privacy of the Google Analytics (replaced by params.analytics.google)
@@ -662,20 +637,17 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [privacy.youtube]
     privacyEnhanced = true
 
-# Options to make output .md files
 # 用于输出 Markdown 格式文档的设置
 [mediaTypes]
   [mediaTypes."text/plain"]
     suffixes = ["md"]
 
-# Options to make output .md files
 # 用于输出 Markdown 格式文档的设置
 [outputFormats.MarkDown]
   mediaType = "text/plain"
   isPlainText = true
   isHTML = false
 
-# Options to make hugo output files
 # 用于 Hugo 输出文档的设置
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -690,7 +662,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     weight = 1
     languageCode = "en"
     languageName = "English"
-    hasCJKLanguage = false
+    hasCJKLanguage = true
     copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
     [languages.en.menu]
       [[languages.en.menu.main]]
@@ -855,7 +827,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
           gravatarEmail = ""
           avatarURL = "https://mycherish.github.io/images/notion-avatar.png"
           title = ""
-          subtitle = "一个简洁、优雅且高效的 Hugo 主题"
+          subtitle = "保持阅读，坚持锻炼"
           typeit = true
           social = true
           disclaimer = ""

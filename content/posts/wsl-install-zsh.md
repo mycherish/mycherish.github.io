@@ -4,6 +4,8 @@ date: 2023-04-24T16:59:46+08:00
 draft: false
 ---
 
+<!--more-->
+
 ## 两行命令来安装 zsh 和 oh-my-zsh
 
 ```bash
