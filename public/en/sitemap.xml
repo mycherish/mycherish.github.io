@@ -5,7 +5,7 @@
             <loc>https://mycherish.github.io/en/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
-                        href="https://mycherish.github.io/zh-cn/categories/"
+                        href="https://mycherish.github.io/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
@@ -14,7 +14,7 @@
             <loc>https://mycherish.github.io/en/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
-                        href="https://mycherish.github.io/zh-cn/tags/"
+                        href="https://mycherish.github.io/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"
@@ -23,7 +23,7 @@
             <loc>https://mycherish.github.io/en/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
-                        href="https://mycherish.github.io/zh-cn/"
+                        href="https://mycherish.github.io/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="en"

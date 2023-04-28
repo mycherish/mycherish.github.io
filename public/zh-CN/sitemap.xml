@@ -2,30 +2,34 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://mycherish.github.io/zh-cn/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://mycherish.github.io/en/categories/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://mycherish.github.io/zh-cn/categories/"
-                    /></url><url>
-            <loc>https://mycherish.github.io/zh-cn/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://mycherish.github.io/en/tags/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://mycherish.github.io/zh-cn/tags/"
-                    /></url><url>
-            <loc>https://mycherish.github.io/zh-cn/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://mycherish.github.io/posts/</loc><lastmod>2023-04-27T11:59:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://mycherish.github.io/wsl-install-zsh/</loc><lastmod>2023-04-27T11:59:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://mycherish.github.io/</loc><lastmod>2023-04-27T11:59:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://mycherish.github.io/en/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://mycherish.github.io/zh-cn/"
-                    /></url></urlset>
+                    href="https://mycherish.github.io/"
+                    /></url><url>
+            <loc>https://mycherish.github.io/my-first-post/</loc><lastmod>2023-04-25T14:53:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://mycherish.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://mycherish.github.io/en/categories/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://mycherish.github.io/categories/"
+                    /></url><url>
+            <loc>https://mycherish.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://mycherish.github.io/en/tags/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="zh-cn"
+                    href="https://mycherish.github.io/tags/"
+                    /></url><url>
+            <loc>https://mycherish.github.io/about/</loc><lastmod>2023-04-25T14:53:12&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url></urlset>
