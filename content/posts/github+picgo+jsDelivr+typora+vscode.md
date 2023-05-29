@@ -4,7 +4,7 @@ date: 2023-05-04T10:50:22+08:00
 draft: false
 ---
 
-> 搜集资料，建立自己的图床
+> 建立自己的图床
 <!--more-->
 
 ## 在 GitHub 新建图片仓库
@@ -65,8 +65,12 @@ GitHub Release: https://github.com/Molunerfinn/PicGo/releases
 
 ## 申请GitHub令牌（token）
 
-**Settings -> Developer settings->Personal access tokens → tokens classic → Generate new token → Generate new token(classic)**
+点击右上角头像，然后
+Settings -> Developer settings->Personal access tokens → tokens classic → Generate new token → Generate new token(classic)  
 ![20230504105903](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/vscode/20230504105903.png)
+
+把 repo 的勾打上即可。然后翻到页面最底部，点击 Generate token 的绿色按钮生成 token。
+![20230504105949](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20230529132051.png)
 创建成功后，及时复制保存，因为之后将不会在出现
 
 ## 配置 picGo
