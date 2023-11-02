@@ -4,9 +4,17 @@
         <link>https://mycherish.github.io/</link>
         <description>咖啡 酒馆 - 博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>determined_xw@126.com (读者)</managingEditor>
-            <webMaster>determined_xw@126.com (读者)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Apr 2023 16:59:46 &#43;0800</lastBuildDate>
+            <webMaster>determined_xw@126.com (读者)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 04 May 2023 10:50:22 &#43;0800</lastBuildDate>
             <atom:link href="https://mycherish.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>我的图床 | Github-picgo-jsDelivr-typora-vscode</title>
+    <link>https://mycherish.github.io/github-picgo-jsdelivr-typora-vscode/</link>
+    <pubDate>Thu, 04 May 2023 10:50:22 &#43;0800</pubDate>
+    <author>读者</author>
+    <guid>https://mycherish.github.io/github-picgo-jsdelivr-typora-vscode/</guid>
+    <description><![CDATA[<p>建立自己的图床</p>]]></description>
+</item>
+<item>
     <title>WSL安装zsh</title>
     <link>https://mycherish.github.io/wsl-install-zsh/</link>
     <pubDate>Mon, 24 Apr 2023 16:59:46 &#43;0800</pubDate>
