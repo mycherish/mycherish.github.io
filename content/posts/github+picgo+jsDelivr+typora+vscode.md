@@ -1,10 +1,10 @@
 ---
-title: "我的图床|Github+picgo+jsDelivr+typora+vscode"
+title: "我的图床 | Github-picgo-jsDelivr-typora-vscode"
 date: 2023-05-04T10:50:22+08:00
 draft: false
 ---
 
-> 建立自己的图床
+建立自己的图床
 <!--more-->
 
 ## 在 GitHub 新建图片仓库
@@ -37,8 +37,8 @@ brew install picgo --cask
 GitHub Release: https://github.com/Molunerfinn/PicGo/releases
 
 - 解决Mac安装软件的“已损坏，无法打开。 您应该将它移到废纸篓”问题
-[https://blog.csdn.net/outman_1921/article/details/114012537](https://blog.csdn.net/outman_1921/article/details/114012537)
-   
+  [https://blog.csdn.net/outman_1921/article/details/114012537](https://blog.csdn.net/outman_1921/article/details/114012537)
+  
    1. 打开任何来源
     
         打开终端或者iTerm2 输入
@@ -76,23 +76,23 @@ Settings -> Developer settings->Personal access tokens → tokens classic → Ge
 ## 配置 picGo
 ![20230504105949](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/vscode/20230504105949.png)
 - 仓库名
-    
+  
     > 账户名/仓库名的格式填写
     > 
 - 分支名
-    
+  
     > 填写创建仓库时候的分支，一般是master
     > 
 - Token
-    
+  
     > 刚才在 GitHub 生成的Token
     > 
 - 存储路径
-    
+  
     > 最后一定要加上 `/`
     > 
 - 自定义域名
-    
+  
     > https://cdn.jsdelivr.net/gh/用户名/仓库名
     > 
     
