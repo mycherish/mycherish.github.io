@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = '读者的博客'
+title = '七月的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"

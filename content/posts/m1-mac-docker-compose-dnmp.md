@@ -36,34 +36,7 @@ draft: false
 
 > 我用的手动安装
 
-1. 使用 Homebrew 安装
-
-   https://yeasy.gitbook.io/docker_practice/install/mac
-
-   ```bash
-   brew install --cask docker
-   ```
-
-   或者
-
-   https://www.runoob.com/docker/macos-docker-install.html
-
-   ```bash
-   $ brew install --cask --appdir=/Applications docker
-   
-   ==> Creating Caskroom at /usr/local/Caskroom
-   ==> We'll set permissions properly so we won't need sudo in the future
-   Password:          # 输入 macOS 密码
-   ==> Satisfying dependencies
-   ==> Downloading https://download.docker.com/mac/stable/21090/Docker.dmg
-   ######################################################################## 100.0%
-   ==> Verifying checksum for Cask docker
-   ==> Installing Cask docker
-   ==> Moving App 'Docker.app' to '/Applications/Docker.app'.
-   &#x1f37a;  docker was successfully installed!
-   ```
-
-2. 手动下载安装
+1. 手动下载安装
 
    点击以下链接下载 [Install Docker Desktop on Mac](https://docs.docker.com/docker-for-mac/install/)
 
@@ -80,10 +53,37 @@ draft: false
    Docker version 23.0.5, build bc4487a
    ```
 
+2. 使用 Homebrew 安装
+
+   https://yeasy.gitbook.io/docker_practice/install/mac
+
+   ```bash
+   brew install --cask docker
+   ```
+
+   或者 https://www.runoob.com/docker/macos-docker-install.html
+
+   ```bash
+   $ brew install --cask --appdir=/Applications docker
+   
+   ==> Creating Caskroom at /usr/local/Caskroom
+   ==> We'll set permissions properly so we won't need sudo in the future
+   Password:          # 输入 macOS 密码
+   ==> Satisfying dependencies
+   ==> Downloading https://download.docker.com/mac/stable/21090/Docker.dmg
+   ######################################################################## 100.0%
+   ==> Verifying checksum for Cask docker
+   ==> Installing Cask docker
+   ==> Moving App 'Docker.app' to '/Applications/Docker.app'.
+   &#x1f37a;  docker was successfully installed!
+   ```
+
+
+
 
 ## 镜像加速
 
->  Docker 镜像加速:https://www.runoob.com/docker/docker-mirror-acceleration.html
+>  Docker 镜像加速：https://www.runoob.com/docker/docker-mirror-acceleration.html
 
 - 阿里云：**https://<你的ID>.mirror.aliyuncs.com**
 - 科大镜像：**https://docker.mirrors.ustc.edu.cn/**
@@ -91,7 +91,8 @@ draft: false
 - 七牛云加速器：**https://reg-mirror.qiniu.com**
 - 百度：https://mirror.baidubce.com
 
-1. 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors，登陆后，左侧菜单点击“镜像工具”中“镜像加速器”就可以看到你的专属地址了。
+1. 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
+   登陆后，左侧菜单点击“镜像工具”中“镜像加速器”就可以看到你的专属地址了。
 
 2. 配置镜像（阿里云镜像加速器页面下边也会有说明）
 
