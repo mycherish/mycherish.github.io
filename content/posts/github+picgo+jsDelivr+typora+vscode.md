@@ -1,10 +1,11 @@
 ---
-title: "我的图床 | Github-picgo-jsDelivr-typora-vscode"
+title: "我的图床：Github-picgo-jsDelivr-typora-vscode"
 date: 2023-05-04T10:50:22+08:00
 draft: false
+tags: ["图床"]
+categories: ["工具"]
 ---
 
-建立自己的图床
 <!--more-->
 
 ## 在 GitHub 新建图片仓库

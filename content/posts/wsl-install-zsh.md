@@ -2,6 +2,8 @@
 title: "WSL安装zsh"
 date: 2023-04-24T16:59:46+08:00
 draft: false
+tags: ["Windows", "WSL"]
+categories: ["环境配置"]
 ---
 
 <!--more-->
