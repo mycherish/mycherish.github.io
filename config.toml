@@ -185,7 +185,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Gravatar 邮箱，用于优先在主页显示的头像
       gravatarEmail = "determined_xw@126.com"
       # 主页显示头像的 URL
-      avatarURL = "https://mycherish.github.io/images/notion-avatar.png"
+      avatarURL = "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/notion-avatar.png"
       # 主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题 (允许 HTML 格式)
@@ -825,7 +825,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         [languages.zh-cn.params.home.profile]
           enable = true
           gravatarEmail = ""
-          avatarURL = "https://mycherish.github.io/images/notion-avatar.png"
+          avatarURL = "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/notion-avatar.png"
           title = ""
           subtitle = "保持阅读，坚持锻炼"
           typeit = true
