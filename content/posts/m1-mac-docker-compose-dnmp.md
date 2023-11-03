@@ -1,7 +1,7 @@
 ---
 title: "M1 Mac Docker Compose Dnmp 开发环境配置"
 date: 2023-11-02T17:13:12+08:00
-draft: true
+draft: false
 ---
 
 <!--more-->
