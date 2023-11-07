@@ -27,7 +27,7 @@ enableEmoji = true
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 [author]
-  name = "读者"
+  name = "七月"
   email = "determined_xw@126.com"
   link = "about"
 
@@ -90,7 +90,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = "读者"
+      name = "七月的博客"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
