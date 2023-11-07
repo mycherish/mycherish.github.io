@@ -1,12 +1,5 @@
----
-title: "M1 Mac Docker Compose Dnmp 开发环境配置"
-date: 2023-11-02T17:13:12+08:00
-draft: false
-tags: ["Docker", "环境搭建", "dnmp", "Mac"]
-categories: ["学习笔记", "环境搭建"]
----
+# M1 Mac 使用 Docker 配置 dnmp 环境
 
-<!--more-->
 
 
 ## 目录结构
@@ -15,6 +8,8 @@ categories: ["学习笔记", "环境搭建"]
 .
 ├── compose.dockerfile
 │   ├── docker-compose.yml
+│   ├── es7.9.1
+│   │   └── Dockerfile
 │   ├── mysql8.0.34
 │   │   └── Dockerfile
 │   ├── nginx
@@ -27,6 +22,26 @@ categories: ["学习笔记", "环境搭建"]
 │       └── Dockerfile
 ├── data
 ├── etc
+│   ├── es7.9.1
+│   │   └── elasticsearch.yml
+│   ├── mysql8.0.34
+│   │   └── my.cnf
+│   ├── nginx
+│   │   ├── conf.d
+│   │   └── nginx.conf
+│   ├── php7.3
+│   │   ├── conf.d
+│   │   ├── php.ini
+│   │   └── www.conf
+│   ├── php8.1
+│   │   ├── conf.d
+│   │   ├── php.ini
+│   │   └── www.conf
+│   └── redis
+│       └── redis.conf
+├── plugins
+│   └── es7.9.1
+│       └── ik
 ├── log
 ```
 
@@ -37,6 +52,7 @@ categories: ["学习笔记", "环境搭建"]
 官方安装教程：https://docs.docker.com/desktop/install/mac-install/
 
 > 我用的手动安装
+
 
 1. 手动下载安装
 
@@ -63,7 +79,7 @@ categories: ["学习笔记", "环境搭建"]
    brew install --cask docker
    ```
 
-   或者 https://www.runoob.com/docker/macos-docker-install.html
+   或者  https://www.runoob.com/docker/macos-docker-install.html
 
    ```bash
    $ brew install --cask --appdir=/Applications docker
@@ -82,7 +98,6 @@ categories: ["学习笔记", "环境搭建"]
 
 
 
-
 ## 镜像加速
 
 >  Docker 镜像加速：https://www.runoob.com/docker/docker-mirror-acceleration.html
@@ -94,8 +109,8 @@ categories: ["学习笔记", "环境搭建"]
 - 百度：https://mirror.baidubce.com
 
 1. 阿里云镜像获取地址：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
-   登陆后，左侧菜单点击“镜像工具”中“镜像加速器”就可以看到你的专属地址了。
 
+   登陆后，左侧菜单点击“镜像工具”中“镜像加速器”就可以看到你的专属地址了。
 2. 配置镜像（阿里云镜像加速器页面下边也会有说明）
 
    建议多添加几个国内的镜像，如果有不能使用的，会切换到可以使用个的镜像来拉取。
@@ -144,8 +159,6 @@ categories: ["学习笔记", "环境搭建"]
 
 ## 安装 Nginx
 
-> 参考：https://learnku.com/articles/31344
->
 > 官方文档：<a id='https://hub.docker.com/_/nginx'>https://hub.docker.com/_/nginx</a>
 
 1. 关闭本地 nginx（如果开启了的话，且恰好占用 80 端口）
@@ -208,11 +221,9 @@ categories: ["学习笔记", "环境搭建"]
     docker rm -f run-nginx
     ```
 
-
-
 ## 安装 php:7.3-fpm
 
-地址：https://hub.docker.com/_/php
+官方仓库地址：https://hub.docker.com/_/php
 
 Dockerfile 一直没成功，故直接`pull`，扩展之后再说
 
@@ -220,7 +231,7 @@ Dockerfile 一直没成功，故直接`pull`，扩展之后再说
 docker pull php:7.3-fpm
 ```
 
-copy 出 nginx 配置一份，将 php 的相关配置也 copy 到本地。
+拷贝出 nginx 配置一份，将 php 的相关配置也拷贝到本地。
 
 ```bash
 docker run --name tmp-php-fpm -d php:7.3-fpm
@@ -233,13 +244,11 @@ docker cp tmp-php-fpm:/usr/local/etc/php/conf.d/ ~/dockerServer/etc/php7.3
 docker rm -f tmp-php-fpm
 ```
 
-
-
 ## 修改 nginx、php 配置文件
 
 1. 修改 nginx 配置
 
-   复制一份 default.conf
+   拷贝一份 default.conf
 
    ```bash
    cd ~/dockerServer/etc/nginx/conf.d
@@ -248,7 +257,7 @@ docker rm -f tmp-php-fpm
 
    在新文件中加入以下内容
 
-   ```bash
+   ```nginx
    location ~ \.php$ {
       fastcgi_pass   php-fpm-container:9000;
       fastcgi_index  index.php;
@@ -271,8 +280,6 @@ docker rm -f tmp-php-fpm
    ```bash
    cp php.ini-development php.ini
    ```
-
-
 
 ## 启动 php、nginx 容器
 
@@ -397,7 +404,7 @@ vim Dockerfile
    
    添加
    
-   ```bash
+   ```ini
    
    xdebug.mode=debug
    xdebug.remote_handler = dbgp
@@ -444,7 +451,7 @@ vim Dockerfile
    
    参考以下内容修改
    
-   ```json
+   ```nginx
    server {
        listen       80;
        server_name  localhost;
@@ -480,7 +487,7 @@ vim Dockerfile
    
    项目配置 nginx 参考
    
-   ```json
+   ```nginx
    server {
        listen       80;
        server_name  dev-www.sx1211.com;
@@ -601,39 +608,39 @@ vim redis.conf
 
 注释`bind 127.0.0.1 -::1` ，解绑 local ip
 
-```bash
+```nginx
 # bind 127.0.0.1 -::1
 ```
 
 或者
 
-```json
+```nginx
 bind 0.0.0.0
 ```
 
 确保 daemonize，为no(默认) ,否则通过`docker -d`方式不能启动 redis， (非 docker 方式,需要改为`yes`实现后台启动)
 
-```bash
+```nginx
 daemonize no
 ```
 
 外网访问
 
-```bash
+```nginx
 #protected-mode yes
 protected-mode no
 ```
 
 设定密码
 
-```bash
+```nginx
 #requirepass foobared
 requirepass welcome1
 ```
 
 使用 aof 持久化方式
 
-```bash
+```nginx
 #appendonly no
 appendonly yes
 ```
@@ -947,6 +954,8 @@ CMD ["php-fpm"]
 
 ## Docker Compose 
 
+### 使用
+
 ```bash
 cd ~/dockerServer/compose.dockerfile
 ```
@@ -955,7 +964,7 @@ cd ~/dockerServer/compose.dockerfile
 vim docker-compose.yml
 ```
 
-docker-compose.yml 内容
+填入以下内容
 
 ```yaml
 version: "3"
@@ -1047,13 +1056,11 @@ networks:
   lnmp-networks:
 ```
 
-启动
+### 启动
 
 ```bash
 docker-compose up -d
 ```
-
-
 
 ## 使用 docker 命令执行容器的命令
 
@@ -1067,15 +1074,13 @@ docker exec -it php8.1 php -m
 docker exec -it nginx nginx -s reload
 ```
 
-
-
-## 项目中配置修改
+## 项目中配置修改 
 
 > 设置自定义路径的都需要修改
 
 admin .env 配置文件修改
 
-```bash
+```lisp
 ;文件、日志目录
 SCRIPT_FILE_PATH=/var/www/html/sx-code/www/script/
 CURRENT_PATH=/var/www/html/sx-code/admin/
@@ -1084,14 +1089,357 @@ RUNTIME_PATH=/var/log/php/admin/new_trunk/php/runtimes/
 
 teacher_center .env 配置文件修改
 
-```bash
+```lisp
 ;课件
 COURSEWARE_DOWNLOAD_PATH='/var/log/php/teacher_center/tmpfile/'
 ```
 
+## Elasticsearch7.9.1
+
+### 下载 es
+
+```bash
+docker pull elasticsearch:7.9.1
+```
+
+### 启动 es
+
+```bash
+docker run -p 9201:9200 -p 9300:9300 --name=es01 -e "discovery.type=single-node" -d elasticsearch:7.9.1
+```
+
+docker 启动 elasticsearch 报错：
+> ——ERROR: Elasticsearch did not exit normally - check the logs at xxx
+解决：https://blog.csdn.net/weixin_40816738/article/details/121617618
+在运行命令中添加 `-e "discovery.type=single-node"`
+**discovery.type**
+（[静态](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/settings.html#static-cluster-setting)）指定 Elasticsearch 是否应形成多节点集群。默认情况下，Elasticsearch 在形成集群时会发现其他节点，并允许其他节点稍后加入集群。如果`discovery.type`设置为`single-node`，Elasticsearch 将形成单节点集群并抑制 所设置的超时 `cluster.publish.timeout`。有关何时可以使用此设置的更多信息，请参阅[单节点发现](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/bootstrap-checks.html#single-node-discovery)。
+
+来源：https://www.elastic.co/guide/en/elasticsearch/reference/7.17/modules-discovery-settings.html
+
+拷贝配置文件
+
+```bash
+cd ~/dockerServer/etc
+mkdir es7.9.1
+docker cp es01:/usr/share/elasticsearch/config/elasticsearch.yml es7.9.1
+mkdir -p ~/dockerServer/data/es7.9.1
+```
+
+删除容器
+
+```bash
+docker rm -f es01
+```
 
 
-参考
 
-- https://learnku.com/articles/31344#62c3b1
+### ik 分词器
+
+手动下载：https://github.com/medcl/elasticsearch-analysis-ik/releases?page=7
+
+```bash
+mkdir -p ~/dockerServer/plugins/es7.9.1/ik
+mv ~/Downloads/elasticsearch-analysis-ik-7 ~/dockerServer/plugins/es7.9.1/ik
+```
+
+### 以下适用于 amd6 4架构系统，M1没有适合的 Kibana 镜像
+
+#### 安装 kibana， 自定义网络
+
+> Error response from daemon: user specified IP address is supported on user defined networks only.
+>
+> 仅在用户定义的网络上支持用户指定的IP地址。
+
+创建自定义网络
+
+```bash
+docker network create --subnet=172.19.0.0/16 es-network
+```
+
+#### 启动容器时，配置固定IP
+
+```bash
+docker run -p 9200:9200 -p 9300:9300 \
+--restart=always \
+--name=elasticsearch7.9.1 \
+-e "discovery.type=single-node" \
+--net=es-network --ip=172.19.0.12 \
+-v ~/dockerServer/data/es7.9.1:/usr/share/elasticsearch/data \
+-v ~/dockerServer/etc/es7.9.1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+-v ~/dockerServer/plugins/es7.9.1/ik:/usr/share/elasticsearch/plugins \
+-d elasticsearch:7.9.1
+```
+
+#### 安装 kibana7.9.1
+
+```bash
+docker pull kibana:7.9.1
+```
+
+启动，指定 es 的IP，配置网络
+
+```bash
+docker run -p 5601:5601 -d --name kibana \
+-e ELASTICSEARCH_HOSTS=http://172.19.0.12:9200 \
+--net=es-network \
+--restart=always kibana:7.9.1
+```
+
+### M1 本地安装Kibana
+
+> 可能需要安装jdk1.8
+>
+> 1. 下载 JDK1.8
+>
+>     可以到[Java Downloads | Oracle](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)下载，但是 Oracle 需要登录或者注册，然后才能下载，注册一个就好了。
+>
+> 2. 安装 java 8
+>
+> 3. 查看当前的 Java 版本 
+>
+>    ```bash
+>    java -version
+>    ```
+
+#### 启动 es
+
+```bash
+docker run -p 9200:9200 -p 9300:9300 \
+--restart=always \
+--name=elasticsearch7.9.1 \
+-e "discovery.type=single-node" \
+-v ~/dockerServer/data/es7.9.1:/usr/share/elasticsearch/data \
+-v ~/dockerServer/etc/es7.9.1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+-v ~/dockerServer/plugins/es7.9.1/ik:/usr/share/elasticsearch/plugins \
+-d elasticsearch:7.9.1
+```
+
+#### 安装
+
+点击 [View past releases](https://www.elastic.co/downloads/past-releases#kibana)，选择和已安装的 ES 版本相同的版本。
+
+解压，默认在下载目录（也可以放到自己想放的目录），进入目录
+
+```bash
+# 进入kibana的文件目录下
+# 启动命令（加-d问后台启动） 
+# ~/Applications/kibana-7.9.1-darwin-x86_64/bin/kibana
+# ./bin/kibana
+cd ~/Applications/kibana-7.9.1-darwin-x86_64
+# 后台启动
+./bin/kibana -d
+```
+
+#### 本地 Kibana 访问其他的机器的 es
+
+配置文件: /config/kibana.yml
+
+修改 `elasticsearch.hosts` 的值
+
+```yml
+# The URLs of the Elasticsearch instances to use for all your queries.
+# elasticsearch.hosts: ["http://localhost:9200"]
+
+elasticsearch.hosts: ["http://estest.com:9200"]
+```
+
+### Dockerfile 添加es
+
+1. 编写 Dockerfile
+
+    ```bash
+    cd ~/dockerServer/compose.dockerfile/es7.9.1
+    cd es7.9.1
+    vim Dockerfile
+    ```
+
+    ```bash
+    FROM elasticsearch:7.9.1
+    
+    # container creator
+    LABEL maintainer="liu_xiao_guo@yahoo.com"
+    
+    # copy the configuration file into the container
+    # COPY elasticsearch.yml /usr/share/elasticsearch/config
+    
+    # expose the default Elasticsearch port
+    EXPOSE 9200 9300
+    ```
+
+1. 启动测试
+
+    ```bash
+    docker build -t my-es:7.9.1 .
+    ```
+
+    ```bash
+    docker run -p 9200:9200 -p 9300:9300 \
+    --restart=always \
+    --name=elasticsearch7.9.1 \
+    -e "discovery.type=single-node" \
+    -v ~/dockerServer/data/es7.9.1:/usr/share/elasticsearch/data \
+    -v ~/dockerServer/etc/es7.9.1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+    -v ~/dockerServer/plugins/es7.9.1/ik:/usr/share/elasticsearch/plugins \
+    -d my-es:7.9.1
+    ```
+
+3. 编写 docker-compose.yml
+
+   -e "discovery.type=single-node" 加入配置文件
+
+   ```bash
+   vim ~/dockerServer/etc/es7.9.1/elasticsearch.yml
+   ```
+
+   ```yml
+   discovery.type: single-node
+   ```
+
+   
+
+   ```bash
+   vim ~/dockerServer/compose.dockerfile/docker-compose.yml
+   ```
+
+   ```yml
+   version: "3"
+   
+   services:
+     nginx:
+       build: ./nginx
+       ports:
+         - "80:80"
+       restart: always
+       tty: true
+       container_name: nginx
+       volumes:
+         - ~/dockerServer/www:/usr/share/nginx/html
+         - ~/dockerServer/log/nginx:/var/log/nginx
+         - ~/dockerServer/etc/nginx/conf.d:/etc/nginx/conf.d
+         - ~/dockerServer/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+       networks:
+         - lnmp-networks
+     
+     mysql8.0.34:
+       build: ./mysql8.0.34
+       container_name: mysql8.0.34
+       tty: true
+       restart: always
+       ports:
+         - "3306:3306"
+       volumes:
+         - ~/dockerServer/data/mysql8.0.34:/var/lib/mysql
+         - ~/dockerServer/data/mysql-files8.0.34:/var/lib/mysql-files
+         - ~/dockerServer/etc/mysql8.0.34/my.cnf:/etc/my.cnf
+         - ~/dockerServer/log/mysql8.0.34:/var/log
+       environment:
+         MYSQL_ROOT_PASSWORD: 123456
+       networks:
+         - lnmp-networks
+         
+     redis:
+       build: ./redis
+       container_name: redis
+       tty: true
+       restart: always
+       ports:
+         - "6380:6379"
+       volumes:
+         - ~/dockerServer/etc/redis/redis.conf:/etc/redis.conf
+         - ~/dockerServer/data/redis:/data
+         - ~/dockerServer/log/redis:/var/log
+       networks:
+         - lnmp-networks
+   
+     php7.3:
+       build: ./php7.3
+       tty: true
+       restart: always
+       container_name: php7.3
+       ports:
+         - "9000:9000"
+       volumes:
+         - ~/dockerServer/www:/var/www/html
+         - ~/dockerServer/log/php7.3:/var/log/php
+         - ~/dockerServer/etc/php7.3/php.ini:/usr/local/etc/php/php.ini
+         - ~/dockerServer/etc/php7.3/www.conf:/usr/local/etc/php-fpm.d/www.conf
+         - ~/dockerServer/etc/php7.3/conf.d:/usr/local/etc/php/conf.d
+       depends_on:
+         - nginx
+       networks:
+         - lnmp-networks
+         
+     php8.1:
+       build: ./php8.1
+       tty: true
+       restart: always
+       container_name: php8.1
+       ports:
+         - "9081:9000"
+       volumes:
+         - ~/dockerServer/www:/var/www/html
+         - ~/dockerServer/log/php8.1:/var/log/php
+         - ~/dockerServer/etc/php8.1/php.ini:/usr/local/etc/php/php.ini
+         - ~/dockerServer/etc/php8.1/www.conf:/usr/local/etc/php-fpm.d/www.conf
+         - ~/dockerServer/etc/php8.1/conf.d:/usr/local/etc/php/conf.d
+       depends_on:
+         - nginx
+       networks:
+         - lnmp-networks
+         
+     es7.9.1:
+       build: ./es7.9.1
+       tty: true
+       restart: always
+       container_name: elasticsearch7.9.1
+       ports:
+         - "9200:9200"
+         - "9300:9300"
+       volumes:
+         - ~/dockerServer/data/es7.9.1:/usr/share/elasticsearch/data
+         - ~/dockerServer/etc/es7.9.1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+         - ~/dockerServer/plugins/es7.9.1/ik:/usr/share/elasticsearch/plugins
+       networks:
+         - lnmp-networks
+         
+   
+   networks:
+     lnmp-networks:
+   ```
+
+   ```bash
+   docker-compose up -d
+   ```
+
+4. 项目中连接 es
+
+   1. TP 使用容器名称
+
+      ```bash
+      SCOUT_DRIVER=elasticsearch
+      ELASTICSEARCH_HOST=elasticsearch7.9.1
+      ELASTICSEARCH_PORT=
+      ELASTICSEARCH_USER=
+      ELASTICSEARCH_PASS=
+      ```
+
+   2. Laravel 中可以直接用“IP+端口号”
+
+      ```bash
+      SCOUT_DRIVER=elasticsearch
+      ELASTICSEARCH_HOST=localhost
+      ELASTICSEARCH_PORT=9200
+      ELASTICSEARCH_USER=
+      ELASTICSEARCH_PASS=
+      ```
+
+## 原文
+
+https://mycherish.github.io/m1-mac-docker-compose-dnmp/
+
+## 参考
+
 - https://learnku.com/articles/38186
+- https://learnku.com/articles/31344
+
