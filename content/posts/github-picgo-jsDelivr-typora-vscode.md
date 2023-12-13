@@ -1,5 +1,5 @@
 ---
-title: "我的图床：Github-picgo-jsDelivr-typora-vscode"
+title: "我的图床：Github、picgo、jsDelivr、typora、vscode"
 date: 2023-05-04T10:50:22+08:00
 draft: false
 tags: ["图床"]
@@ -118,7 +118,6 @@ Settings -> Developer settings->Personal access tokens → tokens classic → Ge
 - 从资源管理器上传：cmd + opt + e
 - 从输入框上传：cmd + opt + o
 
-<aside>
 📃 参考：
 
 - [https://juejin.cn/post/7031461637986975757](https://juejin.cn/post/7031461637986975757)
@@ -126,5 +125,3 @@ Settings -> Developer settings->Personal access tokens → tokens classic → Ge
 - [https://blog.csdn.net/A_zhiyuan/article/details/120042300](https://blog.csdn.net/A_zhiyuan/article/details/120042300)
 
 - [https://zhuanlan.zhihu.com/p/346643522](https://zhuanlan.zhihu.com/p/346643522)
-
-</aside>
