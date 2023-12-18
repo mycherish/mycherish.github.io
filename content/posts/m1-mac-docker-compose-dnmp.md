@@ -1122,7 +1122,7 @@ docker 启动 elasticsearch 报错：
 **discovery.type**
 （[静态](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/settings.html#static-cluster-setting)）指定 Elasticsearch 是否应形成多节点集群。默认情况下，Elasticsearch 在形成集群时会发现其他节点，并允许其他节点稍后加入集群。如果`discovery.type`设置为`single-node`，Elasticsearch 将形成单节点集群并抑制 所设置的超时 `cluster.publish.timeout`。有关何时可以使用此设置的更多信息，请参阅[单节点发现](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/bootstrap-checks.html#single-node-discovery)。
 
-来源：https://www.elastic.co/guide/en/elasticsearch/reference/7.17/modules-discovery-settings.html
+来源：[https://www.elastic.co/guide/en/elasticsearch/reference/7.17/modules-discovery-settings.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/modules-discovery-settings.html)
 
 拷贝配置文件
 
@@ -1440,6 +1440,72 @@ elasticsearch.hosts: ["http://estest.com:9200"]
       ELASTICSEARCH_USER=
       ELASTICSEARCH_PASS=
       ```
+
+
+## PHP 安装 zip 扩展
+
+1. 修改 PHP 的 Dockerfile
+
+    > 解决上传文件报错
+    >
+    > ZipArchive library is not enabled
+
+    ```bash
+    vim ~/dockerServer/compose.dockerfile/php7.3/Dockerfile
+    ```
+
+    ```dockerfile
+    FROM php:7.3-fpm
+    
+    LABEL xuweidong="determined_xw@126.com"
+    
+    ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+    
+    RUN chmod +x /usr/local/bin/install-php-extensions && \
+        install-php-extensions gd xdebug redis mcrypt memcached swoole zip
+    RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
+        install-php-extensions imagick
+    RUN docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache
+    
+    RUN docker-php-ext-install -j$(nproc) bcmath calendar exif gettext sockets dba pcntl shmop sysvmsg sysvsem sysvshm
+    RUN docker-php-ext-install -j$(nproc) mysqli pdo pdo_mysql
+    
+    
+    # 容器启动时执行指令
+    CMD ["php-fpm"]
+    ```
+
+2. 然后在对应的 php.ini 开启扩展
+
+    ```ini
+    extension=zip
+    ```
+
+
+
+
+## PHP 镜像中安装 composer
+
+php7.3
+
+```bash
+vim ~/dockerServer/compose.dockerfile/php7.3/Dockerfile
+```
+
+php8.1
+
+```bash
+vim ~/dockerServer/compose.dockerfile/php8.1/Dockerfile
+```
+
+写入
+
+```dockerfile
+WORKDIR /tmp
+RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+```
+
 
 ## 原文
 
