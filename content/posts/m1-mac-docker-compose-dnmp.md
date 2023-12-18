@@ -1521,4 +1521,4 @@ https://mycherish.github.io/m1-mac-docker-compose-dnmp/
 
 - https://learnku.com/articles/38186
 - https://learnku.com/articles/31344
-
+- https://learnku.com/laravel/t/32527
