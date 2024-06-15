@@ -3,7 +3,7 @@ title: "解决 Laravel Migration Error: Syntax error or access violation: 1071 S
 date: 2024-06-15T16:39:50+08:00
 draft: false
 tags: ["Laravel", "MySQL"]
-categories: ["解决报错"]
+categories: ["项目报错"]
 ---
 
 

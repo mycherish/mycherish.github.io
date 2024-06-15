@@ -3,7 +3,7 @@ title: "解决 Windows 安装 Pillow 报错"
 date: 2024-06-14T15:12:21+08:00
 draft: false
 tags: ["Windows", "Python", "Pillow"]
-categories: ["类库"]
+categories: ["安装报错"]
 ---
 
 
