@@ -2,6 +2,8 @@
 title: "解决 Windows 安装 Pillow 报错"
 date: 2024-06-14T15:12:21+08:00
 draft: false
+tags: ["Windows", "Python", "Pillow"]
+categories: ["类库"]
 ---
 
 
@@ -22,7 +24,7 @@ No matching distribution found for pillow
 ![image.png](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/202406141609253.png)
 
 然后，使用命令安装
-```
+```bash
 pip install path\文件名  
 ```
 ![image.png](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/202406141610024.png)

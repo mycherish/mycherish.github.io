@@ -2,8 +2,8 @@
 title: "M1 Mac Docker Compose Dnmp 开发环境配置"
 date: 2023-11-02T17:13:12+08:00
 draft: false
-tags: ["Docker", "环境搭建", "dnmp", "Mac"]
-categories: ["笔记", "环境配置"]
+tags: ["dnmp", "Mac"]
+categories: ["环境配置"]
 ---
 
 <!--more-->

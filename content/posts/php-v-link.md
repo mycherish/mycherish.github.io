@@ -2,7 +2,7 @@
 title: "macOS 创建各个版本的 php 软链接到环境变量"
 date: 2023-12-11T14:47:00+08:00
 draft: false
-tags: ["php", "软链接", "zsh", "bash"]
+tags: ["php", "软链接", "Mac"]
 categories: ["环境配置"]
 ---
 
