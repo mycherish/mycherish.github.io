@@ -1,5 +1,5 @@
 ---
-title: "Windows Install Pillow"
+title: "解决 Windows 安装 Pillow 报错"
 date: 2024-06-14T15:12:21+08:00
 draft: false
 ---
