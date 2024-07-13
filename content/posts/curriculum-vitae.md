@@ -40,7 +40,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2021.10-2024.4</div>
 
-<b style="font-size:15px">北京山香时代教育科技股份有限公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">北京山香时代教育科技股份有限公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 1. 负责核心业务系统的PHP后端开发，确保代码质量和系统性能。
 2. 主导数据库架构设计，通过索引优化和查询调优，显著提升数据处理效率。
@@ -58,7 +58,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2021.2-2021.9</div>
 
-<b style="font-size:15px">博彦科技股份有限公司</b>（驻场百度）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">博彦科技股份有限公司</b>（驻场百度）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 1. 算子服务打包镜像：镜像验证、使用 Dockerfile 定制镜像。
 
@@ -69,7 +69,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2019.3-2021.2</div>
 
-<b style="font-size:15px">东方兴业网络教育服务有限责任公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">东方兴业网络教育服务有限责任公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 1. 具体包括需求分析、代码审核，API 接口开发和文档编写。
 2. MySQL、SQL Server、MongoDB 等相关数据处理工作。
@@ -77,7 +77,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2017.11-2018.12</div>
 
-<b style="font-size:15px">北京鸣啸教育科技有限公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">北京鸣啸教育科技有限公司</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 1. 负责公司内部管理系统，客户管理系统，日常活动或者比赛的系统的开发和维护，以及项目流程设计。
 
@@ -89,7 +89,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2021.10-2024.4</div>
 
-<b style="font-size:15px">山香网校</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">山香网校</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
@@ -116,7 +116,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2021.10-2024.4</div>
 
-<b style="font-size:14px">教师中心系统</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">教师中心系统</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
@@ -143,7 +143,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2021.07-2021.08</div>
 
-<b style="font-size:14px">审核数据分析平台</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">审核数据分析平台</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
@@ -168,7 +168,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2020.06-2020.08</div>
 
-<b style="font-size:15px">北京民政局社工</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">北京民政局社工</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
@@ -189,7 +189,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2018.10-2018.12</div>
 
-<b style="font-size:15px">用户服务中心</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">用户服务中心</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
@@ -211,7 +211,7 @@ categories: ["个人简历"]
 
 <div style="float:right;color:#808080;">2017.12 - 2018.03</div>
 
-<b style="font-size:15px">客户关系管理系统</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
+<b style="font-size:18px">客户关系管理系统</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP 开发工程师
 
 **项目描述**
 
