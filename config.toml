@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = '七月的博客'
+title = 'Ant的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
@@ -27,7 +27,7 @@ enableEmoji = true
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 [author]
-  name = "七月"
+  name = "Ant"
   email = "determined_xw@126.com"
   link = "about"
 
