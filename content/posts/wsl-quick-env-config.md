@@ -1,7 +1,7 @@
 ---
 title: "Wsl 快速搭建开发环境-迁移新电脑-迁移非系统盘"
 date: 2025-07-15T18:30:54+08:00
-draft: true
+draft: false
 tags: ["Windows", "WSL"]
 categories: ["开发", "环境"]
 ---
