@@ -10,7 +10,8 @@ languageName = "English"
 defaultContentLanguage = "zh-cn"
 
 # 默认每页列表显示的文章数目
-paginate = 12
+[pagination]
+  pagerSize = 15
 # 谷歌分析代号 [UA-XXXXXXXX-X]
 googleAnalytics = ""
 # 版权描述，仅仅用于 SEO
@@ -654,7 +655,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
 
 # 多语言
 [languages]
