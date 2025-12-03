@@ -2,12 +2,12 @@ baseURL = 'https://mycherish.github.io/'
 title = 'Ant的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "en"
+languageCode = "zh-CN"
 # language name ["English", "简体中文", "Français", "Polski", ...]
-languageName = "English"
+languageName = "简体中文"
 
 # 设置默认的语言 ["en", "zh-cn", "fr", "pl", ...]
-defaultContentLanguage = "zh-cn"
+# defaultContentLanguage = "zh-cn"
 
 # 默认每页列表显示的文章数目
 [pagination]
