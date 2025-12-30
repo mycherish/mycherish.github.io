@@ -7,7 +7,7 @@ languageCode = "zh-CN"
 languageName = "简体中文"
 
 # 设置默认的语言 ["en", "zh-cn", "fr", "pl", ...]
-# defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "zh-cn"
 
 # 默认每页列表显示的文章数目
 [pagination]
