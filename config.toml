@@ -31,7 +31,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
 [author]
   name = "徐卫东"
   email = "determined_xw@126.com"
-  link = "/about"
+  link = "/about/"
 
 [menu]
   [[menu.main]]

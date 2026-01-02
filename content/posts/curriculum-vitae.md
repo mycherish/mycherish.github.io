@@ -1,9 +1,10 @@
 ---
 title: "Curriculum Vitae"
-date: 2024-06-16T00:12:28+08:00
+date: 2026-01-02T00:12:28+08:00
 draft: false
 tags: ["PHP"]
 categories: ["个人简历"]
+description: "我的个人简历"
 ---
 
 <!--more-->

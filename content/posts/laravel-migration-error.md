@@ -1,12 +1,13 @@
 ---
-title: "解决 Laravel Migration Error: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes"
+title: "解决 Laravel Migration Error: Syntax error or access violation"
 date: 2024-06-15T16:39:50+08:00
 draft: false
 tags: ["Laravel", "MySQL"]
 categories: ["项目报错"]
+description: "Laravel Migration Error: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes"
 ---
 
-
+<!--more-->
 
 ## 报错信息
 
