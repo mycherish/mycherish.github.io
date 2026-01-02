@@ -6,9 +6,9 @@ tags: ["php", "软链接", "Mac"]
 categories: ["环境配置"]
 ---
 
-<!--more-->
-
 > 本文主要介绍了如何在 macOS 上创建各个版本的 php 软链接到环境变量中， 并将其添加到 PATH 中。
+
+<!--more-->
 
 ## 先看效果
 ![image-20231213095606502](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/image-20231213095606502.png)

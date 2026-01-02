@@ -6,10 +6,9 @@ tags: ["PHP"]
 categories: ["个人简历"]
 ---
 
-
+<!--more-->
 
 # 徐卫东 | PHP/Go 工程师
-
 
 
 🔍 求职意向：PHP/Go 高级开发工程师 ｜ 期望城市：北京

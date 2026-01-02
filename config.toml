@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = 'Ant的博客'
+title = '晴川的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "zh-CN"
@@ -27,10 +27,11 @@ enableEmoji = true
 # 忽略一些构建错误
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "error-output-taxonomy"]
 
+# 作者配置
 [author]
-  name = "Ant"
+  name = "徐卫东"
   email = "determined_xw@126.com"
-  link = "about"
+  link = "/about"
 
 [menu]
   [[menu.main]]
@@ -73,9 +74,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
   # 日期格式
   dateFormat = "2006-01-02"
   # 网站标题, 用于 Open Graph 和 Twitter Cards
-  title = "咖啡酒馆"
+  title = "我的个人博客"
   # 网站描述, 用于 RSS, SEO, Open Graph 和 Twitter Cards
-  description = "咖啡 酒馆 - 博客"
+  description = "这是我的个人技术博客"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/logo.png"]
 
@@ -91,7 +92,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = "七月的博客"
+      name = "晴川的博客"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标

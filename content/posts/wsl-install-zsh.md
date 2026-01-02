@@ -6,9 +6,12 @@ tags: ["Windows", "WSL", "Zsh"]
 categories: ["工具"]
 ---
 
+
+> 两行命令来安装 zsh 和 oh-my-zsh
+
 <!--more-->
 
-## 两行命令来安装 zsh 和 oh-my-zsh
+# 安装
 
 ```bash
 sudo apt install zsh

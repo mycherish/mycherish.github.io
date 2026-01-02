@@ -12,6 +12,8 @@ categories: ["项目报错"]
 
 > Laravel Migration Error: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes
 
+<!--more-->
+
 ## 方法一：
 
 根据[官方 Laravel 7.x 文档](https://laravel.com/docs/7.x/migrations#creating-indexes)，你可以很容易地解决这个问题。

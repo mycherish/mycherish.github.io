@@ -6,14 +6,11 @@ tags: ["Windows", "Python", "Pillow"]
 categories: ["安装报错"]
 ---
 
+> Could not find a version that satisfies the requirement pillow (from versions: ) No matching distribution found for pillow
 
-运行
-```bash
-pip install pillow 
-```
-报错
->Could not find a version that satisfies the requirement pillow (from versions: )
-No matching distribution found for pillow
+<!--more-->
+
+运行`pip install pillow`报错
 
 ![image.png](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/202406141608902.png)
 
