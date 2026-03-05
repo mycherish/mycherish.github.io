@@ -207,10 +207,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       paginate = 6
   # 主页的社交信息设置
   [params.social]
-    GitHub = "https://github.com/mycherish"
+    GitHub = "mycherish"
     Linkedin = ""
-    Twitter = "https://twitter.com/CqwezxcX"
-    Instagram = "https://www.instagram.com/determined_xw"
+    Twitter = "CqwezxcX"
+    Instagram = "determined_xw"
     Facebook = ""
     Telegram = ""
     Medium = ""
@@ -279,7 +279,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
     Plume = ""
     HackTheBox = ""
     RootMe= ""
-    Email = "determined_xw@126.com"
+    Email = "xuweidongyn@gmail.com"
     RSS = ""
 
   # 文章页面全局配置
@@ -742,13 +742,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
           social = true
           disclaimer = ""
       [languages.en.params.social]
-        GitHub = "Cherry"
-        Twitter = "xxxx"
-        Instagram = "xxxx"
+        GitHub = "mycherish"
+        Twitter = "CqwezxcX"
+        Instagram = "determined_xw"
         Facebook = "xxxx"
         Telegram = "xxxx"
         Youtubelegacy = "xxxx"
-        Phone = "555-555-555"
+        Phone = "18618234647"
         Email = "xuweidongyn@gmail.com"
         RSS = true
         [languages.en.params.social.Mastodon]
