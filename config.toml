@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = '晴川的博客'
+title = '樱桃的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "zh-CN"
@@ -63,6 +63,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
     title = "categories"
 
 [params]
+  [params.author]
+    name = "徐卫东"
   # 网站默认主题 ["auto", "light", "dark"]
   defaultTheme = "auto"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
@@ -92,7 +94,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = "晴川的博客"
+      name = "徐卫东的博客"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -208,7 +210,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
     GitHub = "https://github.com/mycherish"
     Linkedin = ""
     Twitter = "https://twitter.com/CqwezxcX"
-    Instagram = ""
+    Instagram = "https://www.instagram.com/determined_xw"
     Facebook = ""
     Telegram = ""
     Medium = ""
@@ -330,7 +332,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
     # Mapbox GL JS 配置 (Mapbox GL JS https://docs.mapbox.com/mapbox-gl-js)
     [params.page.mapbox]
       # Mapbox GL JS 的 access token
-      accessToken = "pk.eyJ1IjoiZGlsbG9uenEiLCJhIjoiY2s2czd2M2x3MDA0NjNmcGxmcjVrZmc2cyJ9.aSjv2BNuZUfARvxRYjSVZQ"
+      accessToken = ""
       # 浅色主题的地图样式
       lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
       # 深色主题的地图样式
@@ -490,7 +492,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # Publisher info
       # 出版者信息
       [params.page.seo.publisher]
-        name = "xxxx"
+        name = "徐卫东"
         logoUrl = "/images/avatar.png"
 
   # TypeIt config
@@ -740,14 +742,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
           social = true
           disclaimer = ""
       [languages.en.params.social]
-        GitHub = "xxxx"
+        GitHub = "Cherry"
         Twitter = "xxxx"
         Instagram = "xxxx"
         Facebook = "xxxx"
         Telegram = "xxxx"
         Youtubelegacy = "xxxx"
         Phone = "555-555-555"
-        Email = "xxxx@xxxx.com"
+        Email = "xuweidongyn@gmail.com"
         RSS = true
         [languages.en.params.social.Mastodon]
           id = "@xxxx"
