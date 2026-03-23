@@ -2,7 +2,7 @@
 title: "Brew Manager 优雅地管理 Homebrew"
 date: 2026-03-05T10:32:25+08:00
 draft: false
-featuredImage: "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260305121428380.png"
+featuredImage: "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260323171853641.png"
 tags: ["Go", "HomeBrew", "Mac"]
 categories: ["工具"]
 description: "优雅地管理 Homebrew：我用 Wails 开发了一款 macOS 原生感十足的 GUI 工具"
@@ -41,11 +41,13 @@ Brew-Manager 深度适配了 macOS 的 **Vibrancy（毛玻璃）** 效果。它�
 
 *   **单行操作保护**：在启动或停止服务时，会有加载态保护，防止重复点击导致系统命令冲突。
 
-### 4. ✨ 功能特性
-* **视觉进化**：自动获取 Homebrew Cask 应用图标，界面更直观。
-* **原生转换引擎**：集成 macOS 系统级 `sips` 技术，实现 `.icns` 到 Web 兼容格式的零延迟转换。
-* **智能映射算法**：内置名称映射与模糊匹配逻辑，解决包名（如 `iterm2`）与应用名（如 `iTerm.app`）不一致的问题。
-* **高性能加载**：采用异步并发提取机制，并配合进程级隔离的临时缓存，确保图标加载不卡顿、不错位。
+### 4. ✨ 强大的功能特性
+| 功能 | 说明 |
+|------|------|
+| 📦 **软件图标** | 自动获取 Homebrew Cask 应用图标，界面更直观 |
+| 🔄 **智能映射** | 内置名称映射与模糊匹配，解决包名与应用名不一致的问题 |
+| ⚡ **高性能加载** | 异步并发提取机制 + 进程级临时缓存，图标加载不卡顿 |
+| 🎨 **原生转换** | 集成 macOS 系统级 `sips` 技术，零延迟转换图标格式 |
 
 ***
 
@@ -53,45 +55,101 @@ Brew-Manager 深度适配了 macOS 的 **Vibrancy（毛玻璃）** 效果。它�
 
 这款工具背后的技术栈非常轻量且高效：
 
-*   **Backend**: [Wails v2](https://wails.io/) (基于 Go 语言，调用系统底层命令)
-
-*   **Frontend**: [Vue 3](https://vuejs.org/) + **Vite** (极速的开发体验)
-
-*   **UI Design**: 纯 CSS 实现的 macOS 材质感 + 响应式布局
-
-*   **Icon Design**: 结合 macOS 图标安全区域规范设计的 3D 质感图标
+| 层级 | 技术 |
+|------|------|
+| **后端** | [Wails v2](https://wails.io/) (Go 语言，调用系统底层命令) |
+| **前端** | [Vue 3](https://vuejs.org/) + Vite (极速的开发体验) |
+| **样式** | 纯 CSS 实现的 macOS 材质感 + 响应式布局 |
+| **图标** | 结合 macOS 图标安全区域规范设计的 3D 质感图标 |
 
 ***
 
 ## 📸 预览
 
-![Search](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260301002838262.png)
-
-*   **主界面**：左右分栏设计，左侧管理终端工具（Formulae），右侧管理桌面应用（Casks）。
-
-*   **实时反馈**：点击启动按钮，绿色的呼吸灯亮起，这就是掌控感。
+| 概览 | GUI 应用 | Tap 管理 |
+| :--- | :--- | :--- |
+| ![Overview](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260318235836105.png) | ![GUI Apps](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260318235927897.png) | ![Tap Management](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260319000015839.png) |
 
 ***
 
 ## 🚀 快速上手
 
-你可以直接从 [GitHub Releases](https://github.com/mycherish/brew-manager/releases) 页面下载最新的 `.dmg` 安装包。
+### 安装方式
+
+1. 前往 [GitHub Releases](https://github.com/mycherish/brew-manager/releases) 下载最新的 `.dmg` 安装包
+
+2. 打开 `.dmg` 并将 `Brew-Manager.app` 拖入 **Applications** 文件夹
+
+### 解除隔离
+
+由于未进行 Apple 开发者签名，首次运行请执行：
 
 ```bash
-# 由于未签名，首次运行请执行以下命令解除隔离：
-sudo xattr -rd com.apple.quarantine /Applications/Brew-Manager.app
+
+sudo  xattr  -rd  com.apple.quarantine  /Applications/Brew-Manager.app
+
 ```
 
-***
+### 开发模式
 
-## 结语
+```bash
 
-`Brew-Manager` 是我从 0 到 1 学习 Wails 开发的一次尝试。从最初的一个简单列表，到现在的圆角图标、动画通知、以及毛玻璃特效，每一个像素的打磨都让我对 macOS 开发有了更深的理解。
+# 克隆仓库
 
-如果你也厌倦了频繁输入终端命令，或者想找一个简洁优雅的工具来美化你的开发环境，欢迎试用并给个 **Star 🌟**！
+git  clone  https://github.com/mycherish/brew-manager.git
 
-**项目 GitHub：** <https://github.com/mycherish/brew-manager>
+# 启动开发服务器
 
-***
+cd  brew-manager
 
-*感谢你的阅读，欢迎在 Issue 提出你宝贵的建议！*
+wails  dev
+
+```
+
+---
+
+## 📦 v1.3.0 新功能（最新）
+
+最新版本带来了更多强大功能：
+
+### 🔌 Tap 管理
+
+- 完整的 Tap 管理界面
+
+- 官方/第三方 Tap 分类显示
+
+- 添加、移除、批量更新 Tap
+
+### 🔍 软件包搜索
+
+- 支持搜索 Formulae、Casks、Taps
+
+### ⚡ 性能优化
+
+- 智能刷新：只刷新当前 tab 数据
+
+- 2 分钟自动刷新 + 进度条显示
+
+- 侧边栏实时统计徽章
+
+---
+
+## 💬 结语
+
+Brew Manager 是我从 0 到 1 学习 Wails 开发的一次尝试。从最初的一个简单列表，到现在的圆角图标、动画通知、以及毛玻璃特效，每一个像素的打磨都让我对 macOS 开发有了更深的理解。
+
+如果你也厌倦了频繁输入终端命令，或者想找一个简洁优雅的工具来美化你的开发环境，欢迎试用并给个 **Star** 🌟！
+
+---
+
+## 🔗 相关链接
+
+-  **GitHub**: [github.com/mycherish/brew-manager](https://github.com/mycherish/brew-manager)
+
+-  **Wails**: [wails.io](https://wails.io/)
+
+-  **Vue 3**: [vuejs.org](https://vuejs.org/)
+
+---
+
+> 感谢你的阅读，欢迎在 Issue 提出你宝贵的建议！
