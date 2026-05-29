@@ -2,7 +2,7 @@
 title: "OpenClaw CoralUI - 现代化的 OpenClaw 图形化管理工具"
 date: 2026-04-03T12:15:00+08:00
 draft: false
-featuredImage: "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/openclaw-coralui-banner.png"
+featuredImage: "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260530004120592.png"
 tags: ["Electron", "React", "TypeScript", "OpenClaw", "桌面应用"]
 categories: ["开源项目"]
 description: "基于 Electron + React + TypeScript 构建的 OpenClaw 图形化管理工具，支持系统托盘、Quick Chat、开机自启等功能"
@@ -65,13 +65,9 @@ description: "基于 Electron + React + TypeScript 构建的 OpenClaw 图形化�
 
 ## 📸 界面预览
 
-| 概览 | 安装 | 监控 |
-| :--- | :--- | :--- |
-| ![Overview](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-overview.png) | ![Install](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-install.png) | ![Monitor](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-monitor.png) |
-
-| Quick Chat | 设置 | 托盘菜单 |
-| :--- | :--- | :--- |
-| ![QuickChat](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-quickchat.png) | ![Settings](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-settings.png) | ![Tray](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/coralui-tray.png) |
+| 概览 | 安装 | 监控 |  Quick Chat |
+| :--- | :--- | :--- | :--- |
+| ![](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260530004204921.png) | ![](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260530004258911.png) | ![](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260530004324625.png) | ![](https://cdn.jsdelivr.net/gh/mycherish/imgCloud/img/20260530004521305.png) |
 
 ***
 
