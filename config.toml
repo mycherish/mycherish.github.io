@@ -29,7 +29,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
 
 # 作者配置
 [author]
-  name = "徐卫东"
+  name = "Caelum"
   email = "determined_xw@126.com"
   link = "/about/"
 
@@ -64,7 +64,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
 
 [params]
   [params.author]
-    name = "徐卫东"
+    name = "Caelum"
   # 网站默认主题 ["auto", "light", "dark"]
   defaultTheme = "auto"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
@@ -94,7 +94,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = "徐卫东的博客"
+      name = "Caelum 的博客"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -191,9 +191,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # 主页显示头像的 URL
       avatarURL = "https://cdn.jsdelivr.net/gh/mycherish/imgCloud/notion-avatar.png"
       # 主页显示的网站标题 (支持 HTML 格式)
-      title = ""
+      title = "Caelum"
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = "A Clean, Elegant but Advanced Hugo Theme"
+      subtitle = "PHP / Go 工程师，喜欢把东西做出来。"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
@@ -492,7 +492,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
       # Publisher info
       # 出版者信息
       [params.page.seo.publisher]
-        name = "徐卫东"
+        name = "Caelum"
         logoUrl = "/images/avatar.png"
 
   # TypeIt config
