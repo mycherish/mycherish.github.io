@@ -2,8 +2,8 @@
 title: "Laravel 网页出现 419 是什么意思？"
 date: 2024-06-15T16:02:20+08:00
 draft: false
-tags: ["Laravel", "CSRF"]
 categories: ["项目报错"]
+tags: ["Laravel", "CSRF"]
 ---
 
 

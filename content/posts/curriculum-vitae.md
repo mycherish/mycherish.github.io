@@ -2,8 +2,8 @@
 title: "个人简历"
 date: 2026-01-02T00:12:28+08:00
 draft: false
-tags: ["个人简历"]
 categories: ["个人简历"]
+tags: ["PHP", "Go"]
 description: "我的个人简历"
 ---
 
