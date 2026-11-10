@@ -1,5 +1,5 @@
 baseURL = 'https://mycherish.github.io/'
-title = '樱桃的博客'
+title = 'Caelum 的博客'
 theme = "LoveIt"
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "zh-CN"
@@ -76,7 +76,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
   # 日期格式
   dateFormat = "2006-01-02"
   # 网站标题, 用于 Open Graph 和 Twitter Cards
-  title = "我的个人博客"
+  title = "Caelum 的博客"
   # 网站描述, 用于 RSS, SEO, Open Graph 和 Twitter Cards
   description = "这是我的个人技术博客"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
