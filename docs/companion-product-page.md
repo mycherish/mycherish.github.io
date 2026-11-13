@@ -68,11 +68,56 @@ Prettier、Biome lint、Node 语法、TOML 解析／中英翻译 key 一致性�
 
 ### 剩余迁移工作
 
-1. 将三个工具的正文整理成产品内容，核准安装包、平台和兼容范围；迁移截图并核对来源。
-2. 在各自产品配置保留 `/caelum-orbis/`、`/brew-manager/`、`/openclaw-coralui/` 的 aliases，移除原博客条目。
+1. 三个工具的内容迁移已在下方后续轮次实施，验收与发布边界见“三个工具迁入产品目录”。
+2. 三个 aliases 与原博客条目移除已在后续轮次实施。
 3. 核对首页、文章归档、分类、搜索、RSS 和产品目录，检查旧地址跳转与站内链接。
 4. 验收桌面／手机、深浅色、语言及真实下载入口，审核后再由用户确认提交和发布。
 5. 旧 GitHub Website 通过跳转可继续使用；新产品页上线后可选更新为直接地址。CoralUI 可单独补设 Website。
+
+## 三个工具迁入产品目录（2026-11-14）
+
+上一轮模板通用化已按用户授权本地提交为 `d6de7d4`，未推送。当前这一轮按已确认方案迁移产品内容；用户本地预览后确认继续，进入本地提交，不推送或部署。
+
+### 内容与入口
+
+| 产品             | 新介绍页                      | 旧地址（自动跳转）   | 本轮核对的发布范围                                                              |
+| ---------------- | ----------------------------- | -------------------- | ------------------------------------------------------------------------------- |
+| Caelum Orbis     | `/products/caelum-orbis/`     | `/caelum-orbis/`     | npm `dsh-orbis@2.1.13`；DSH `>=0.2.2-rc.1 <0.3.0-0`；Node.js 范围见下文。       |
+| Brew Manager     | `/products/brew-manager/`     | `/brew-manager/`     | `v1.5.0`，发布附件 `Brew-Manager-v1.5.0.dmg`；README 明确 Apple Silicon。       |
+| OpenClaw CoralUI | `/products/openclaw-coralui/` | `/openclaw-coralui/` | 当前唯一公开 Release 为 `v1.0.0`，附件只有 `OpenClaw.CoralUI-1.0.0-arm64.dmg`。 |
+
+Orbis 的 Node.js 范围为 `^22.19.0 || >=24.0.0`。
+
+来源于本轮读取的 [Orbis README](https://github.com/mycherish/dsh-orbis#readme)、[Orbis package.json](https://github.com/mycherish/dsh-orbis/blob/main/package.json)、[npm registry 元数据](https://registry.npmjs.org/dsh-orbis/latest)、[Brew Manager README](https://github.com/mycherish/brew-manager#readme) 和 [v1.5.0 发布附件](https://github.com/mycherish/brew-manager/releases/tag/v1.5.0)、[CoralUI README](https://github.com/mycherish/openclaw-coralui#readme) 和 [v1.0.0 发布附件](https://github.com/mycherish/openclaw-coralui/releases/tag/v1.0.0)。这是网站内容核对，不是本轮重新运行或验收三个应用。
+
+- 三个原博客 Markdown 已移入产品结构并改写为产品介绍，不保留重复正文。旧入口由 `aliases` 生成 HTML meta refresh 跳转；现有仓库 Website 可以继续访问旧入口。
+- 只增加中文产品页，不生成英文占位页；英文目录继续仅列实际有英文内容的 Companion。
+- 不给产品配置博客 `tags` / `categories`。现有 LoveIt 首页与博客 RSS 已按 `Type=posts` 筛选，归档与分类自然移除三个原文章；不需要修改主题源码。
+- 原文章的截图保留：Orbis 的 2 张本地 WebP 复制到 bundle；Brew Manager 与 CoralUI 原外链各 5 张 PNG 原样下载到各自 bundle，来源为原文的 `cdn.jsdelivr.net/gh/mycherish/imgCloud/img/<原文件名>.png`。Orbis 旧 `static/images/dsh-orbis/` 图片地址保留，避免旧引用失效。
+- 校正 Orbis 的宿主上限和“局域网过滤等于鉴权”的误导，明确插件不额外调用模型，DSH 主任务仍消耗 Token。
+- CoralUI 的源码功能与 `v1.0.0` 下载包分开说明，不再宣称 Windows/Linux 安装包已提供，也不把旧文“v1.1.0 新功能”视为已发布版本。
+- 开发构建、目录结构等细节链接到 README；产品页保留安装、使用、截图及主要功能。没有修改 GitHub 仓库、npm 元数据、插件源码或宿主兼容范围。
+
+### 迁移验收
+
+新增 `tests/product-migration.test.cjs` 验证产品目录 4 项、旧地址跳转、canonical、本地图片、无伪英文译文、博客／分类／RSS 排除、本地搜索索引和中文 sitemap。多语言根 `sitemap.xml` 是索引；页面记录实际位于 `zh-cn/sitemap.xml`。
+
+新增 `tests/product-migration.browser.cjs` 验证三个新页面的桌面／手机布局、图片加载、三档外观、FAQ、安装区跳转和旧入口实际导航。沿用已有回归检查 Companion、中英文首页与目录。
+
+Hugo Extended 0.136.4 构建通过，模板／主题／迁移测试 **20/20**。独立复审递归检查 77 份博客归档、分类与 RSS 产物，无三产品旧文章或新产品页残留。复审发现的 Node.js 范围表格显示问题已移到表外修正。
+
+复审同时发现正文图库沿用 LoveIt 的 `src=loading.svg` / `data-src` 机制，而独立产品页没有加载该机制需要的脚本。已增加站点级 `layouts/products/_markup/render-image.html`，对产品正文使用真实资源 `src` 和浏览器原生 `loading="lazy"`，不改主题、不增加 JS 依赖。回归先复现三个产品的实际 `src` 均为占位图，再修复通过；静态测试明确区分 `src` 与 `data-src`，浏览器逐张滚动并验证 `currentSrc` 与实际像素宽度，避免仅解码占位 SVG 造成假通过。
+
+修复后完整浏览器回归 **27/27** 通过，覆盖中英首页、目录、Companion 和三个新产品的桌面／手机、三档外观、FAQ、正文真实图片及旧入口跳转。格式、Biome lint、JS 语法与差异检查通过。浏览器插件未提供，复用环境已有隔离 Playwright；静态预览需以对应本机 `--baseURL` 构建，否则 aliases 会跳到正式域名，不能用来验收本地导航。没有修改正式 `baseURL` 配置。
+
+临时测试服务在本轮结束时停止，构建、缓存和下载暂存目录清理；原截图已复制入产品 bundle。模板提交为 `d6de7d4`；当前迁移、图片渲染规则、测试与本节文档已通过用户预览并获准本地提交；提交号以 Git 历史为准，未推送或部署。
+
+### 发布前仍需处理
+
+1. 本轮内容迁移已通过用户预览并确认本地提交；后续以 Git 历史记录提交状态。
+2. **线上搜索索引**：当前中文搜索使用 Algolia。生成的本地 `index.json` 已包含新产品地址，但构建或推送本身不证明 Algolia 已同步；需要按现有索引管理方式更新，并在正式站点复验。旧搜索结果即使仍指向旧文章，也可通过 aliases 进入新页。本轮不操作外部搜索服务，不读取管理员密钥。
+3. 用户确认后推送 `master`，等待现有 GitHub Pages 工作流完成，复验新产品页、旧入口、图片、主题与线上搜索。
+4. GitHub Website 可选改为直接产品地址；CoralUI 可补设入口。三页英文翻译可后续单独进行，不阻塞中文迁移。
 
 ## 本地调试
 

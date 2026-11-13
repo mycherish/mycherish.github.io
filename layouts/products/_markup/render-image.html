@@ -1,0 +1,5 @@
+{{- /* Product pages use native image loading and do not load LoveIt's lazyload runtime. */ -}}
+{{- $image := .Page.Resources.GetMatch .Destination -}}
+{{- $src := .Destination -}}
+{{- with $image -}}{{- $src = .RelPermalink -}}{{- end -}}
+<img src="{{ $src }}" alt="{{ .Text | plainify }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $image }} width="{{ .Width }}" height="{{ .Height }}"{{ end }} loading="lazy" decoding="async">
