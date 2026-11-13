@@ -1,6 +1,6 @@
 /* Product-only stylesheet: no effect on LoveIt blog pages. */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: #fafbf9;
   --text: #20251f;
   --muted: #657061;
@@ -307,17 +307,16 @@ footer p {
   margin: 0;
   text-align: right;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #171c19;
-    --text: #eef1eb;
-    --muted: #a3afa2;
-    --line: #354037;
-    --panel: #202822;
-    --accent: #b7d5a4;
-    --button-text: #172215;
-    --code: #303d32;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #171c19;
+  --text: #eef1eb;
+  --muted: #a3afa2;
+  --line: #354037;
+  --panel: #202822;
+  --accent: #b7d5a4;
+  --button-text: #172215;
+  --code: #303d32;
 }
 @media (max-width: 760px) {
   .wrap {
@@ -404,4 +403,27 @@ footer p {
 }
 .prose .highlight pre {
   margin: 0;
+}
+
+nav {
+  flex-wrap: wrap;
+  align-items: center;
+}
+.theme-toggle {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 10px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 17px;
+}
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  nav {
+    gap: 14px;
+  }
 }

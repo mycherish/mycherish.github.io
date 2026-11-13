@@ -1,0 +1,95 @@
+[cpSkip]
+other = "Skip to content"
+
+[cpNav]
+other = "Page navigation"
+
+[cpProducts]
+other = "Products"
+
+[cpFeatures]
+other = "Features"
+
+[cpInstall]
+other = "Install"
+
+[cpStart]
+other = "Get started"
+
+[cpSource]
+other = "View source"
+
+[cpSupport]
+other = "macOS · Supported DSH Web versions · Third-party open source"
+
+[cpDesktop]
+other = "Official Desktop is not supported yet"
+
+[cpScreenshot]
+other = "Actual product interface"
+
+[cpCaption]
+other = "One workspace. Three ways to chat."
+
+[cpEvidence]
+other = "Release acceptance screenshot · Float mode · Test conversation"
+
+[cpFeatureEyebrow]
+other = "MADE FOR YOUR WORKFLOW"
+
+[cpFeatureHeading]
+other = "Less switching.|More focus."
+
+[cpFeatureIntro]
+other = "Bring web conversations into your DSH workspace, with familiar chat controls."
+
+[cpGetStarted]
+other = "GET STARTED"
+
+[cpInstallHeading]
+other = "A few steps.|Then keep chatting."
+
+[cpInstallNote]
+other = "Check your host version and browser prerequisites before installing."
+
+[cpNpm]
+other = "View on npm"
+
+[cpFaqEyebrow]
+other = "BEFORE YOU START"
+
+[cpFaq]
+other = "A few things to know"
+
+[cpClosing]
+other = "Keep the conversation close."
+
+[cpClosingNote]
+other = "Start with a compatible Web environment."
+
+[cpSteps]
+other = "Installation steps"
+
+[cpFeedback]
+other = "Report an issue"
+
+[cpBack]
+other = "← Back to Caelum’s blog"
+
+[cpLicense]
+other = "MIT licensed"
+
+[cpDisclaimer]
+other = "An independent project, not affiliated with DeepSeek."
+
+[cpVersion]
+other = "Version"
+
+[cpLearn]
+other = "Explore product"
+
+[cpEmpty]
+other = "Products are being prepared."
+
+[cpTheme]
+other = "Toggle light and dark mode"

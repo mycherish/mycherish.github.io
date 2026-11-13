@@ -665,95 +665,42 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
     weight = 1
     languageCode = "en"
     languageName = "English"
-    hasCJKLanguage = true
+    title = "Caelum's Blog"
+    hasCJKLanguage = false
     copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        weight = 1
-        identifier = "posts"
-        pre = ""
-        post = ""
-        name = "Posts"
-        url = "/posts/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 2
-        identifier = "tags"
-        pre = ""
-        post = ""
-        name = "Tags"
-        url = "/tags/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 3
-        identifier = "categories"
-        pre = ""
-        post = ""
-        name = "Categories"
-        url = "/categories/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 4
-        identifier = "documentation"
-        pre = ""
-        post = ""
-        name = "Docs"
-        url = "/categories/documentation/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 5
-        identifier = "about"
-        pre = ""
-        post = ""
-        name = "About"
-        url = "/about/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 6
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-        post = ""
-        name = ""
-        url = "https://github.com/dillonzq/LoveIt"
-        title = "GitHub"
+    [[languages.en.menu.main]]
+      weight = 1
+      identifier = "home"
+      name = "Home"
+      url = "/"
+    [[languages.en.menu.main]]
+      weight = 2
+      identifier = "products"
+      name = "Products"
+      url = "/products/"
+    [[languages.en.menu.main]]
+      weight = 3
+      identifier = "github"
+      name = "GitHub"
+      url = "https://github.com/mycherish"
     [languages.en.params]
+      title = "Caelum's Blog"
+      description = "Developer tools and open-source projects by Caelum."
+      [languages.en.params.header.title]
+        name = "Caelum's Blog"
       [languages.en.params.search]
+        enable = false
+      [languages.en.params.home.posts]
+        enable = false
+      [languages.en.params.home.profile]
         enable = true
-        type = "algolia"
-        contentLength = 4000
-        placeholder = ""
-        maxResultLength = 10
-        snippetLength = 30
-        highlightTag = "em"
-        absoluteURL = false
-        [languages.en.params.search.algolia]
-          index = "index.en"
-          appID = "PASDMWALPK"
-          searchKey = "b42948e51daaa93df92381c8e2ac0f93"
-      [languages.en.params.home]
-        rss = 10
-        [languages.en.params.home.profile]
-          enable = true
-          gravatarEmail = ""
-          avatarURL = "/images/avatar.png"
-          title = ""
-          subtitle = "A Clean, Elegant but Advanced Hugo Theme"
-          typeit = true
-          social = true
-          disclaimer = ""
-      [languages.en.params.social]
-        GitHub = "mycherish"
-        Twitter = "CqwezxcX"
-        Instagram = "determined_xw"
-        Facebook = "xxxx"
-        Telegram = "xxxx"
-        Youtubelegacy = "xxxx"
-        Phone = "18618234647"
-        Email = "xuweidongyn@gmail.com"
-        RSS = true
-        [languages.en.params.social.Mastodon]
-          id = "@xxxx"
-          prefix = "https://mastodon.technology/"
+        gravatarEmail = ""
+        avatarURL = ""
+        title = "Caelum"
+        subtitle = "PHP / Go engineer. Building tools for everyday work."
+        typeit = false
+        social = false
+        disclaimer = ""
 
   [languages.zh-cn]
     weight = 2
