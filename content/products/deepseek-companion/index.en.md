@@ -14,11 +14,31 @@ weight: 10
 summary: "DeepSeek web chat in DSH Web, with streaming replies, images, conversation history, and three window modes."
 platformSummary: "macOS · Supported DSH Web versions · Desktop not supported"
 repository: "https://github.com/mycherish/dsh-deepseek-companion"
-npm: "https://www.npmjs.com/package/dsh-deepseek-companion"
 market: "https://mycherish.github.io/dsh-deepseek-companion/index.json"
 issues: "https://github.com/mycherish/dsh-deepseek-companion/issues"
 screenshot: "float.png"
 screenshotAlt: "Companion floating over DSH Web with the FR5_MARKET_OK test reply and message composer. The application screenshot is in Chinese."
+brandName: "Companion"
+eyebrow: "DEEPSEEK COMPANION"
+supportLines:
+  [
+    "macOS · Supported DSH Web versions · Third-party open source",
+    "Official Desktop is not supported yet",
+  ]
+screenshotCaption: "One workspace. Three ways to chat."
+screenshotNote: "Release acceptance screenshot · Float mode · Test conversation"
+featureIntro: "Bring web conversations into your DSH workspace, with familiar chat controls."
+installNote: "Check your host version and browser prerequisites before installing."
+license: "MIT licensed"
+disclaimer: "An independent project, not affiliated with DeepSeek."
+featureHeading: ["Less switching.", "More focus."]
+installHeading: ["A few steps.", "Then keep chatting."]
+closing:
+  title: "Keep the conversation close."
+  text: "Start with a compatible Web environment."
+installLink:
+  url: "https://www.npmjs.com/package/dsh-deepseek-companion"
+  label: "View on npm"
 features:
   - title: "Familiar chat controls"
     text: "Stream replies, render Markdown and code, toggle Deep Think and Search, and stop generation."

@@ -1,4 +1,4 @@
-# Companion 产品页维护
+# 产品页维护
 
 统一目录：`https://mycherish.github.io/products/`。博客导航使用“产品”，不为每个产品新增顶级菜单。
 
@@ -12,7 +12,67 @@
 
 ## 新增产品
 
-在 `content/products/<产品名>/index.md` 添加已准备好的产品内容。目录自动读取本栏目页面，按 `weight` 排序；可配置 `title`、`summary`、`version`、`platformSummary`，无须修改导航或手工添加卡片。未准备完成的页面使用 `draft: true`，不在正式构建中展示。当前详情模板针对 Companion，新产品需选择适合自己的详情模板，不能直接套用固定功能文案。目录布局为 `layouts/products/list.html`，样式为 `static/css/products-directory.css`。
+在 `content/products/<产品名>/index.md` 添加已准备好的产品内容。目录自动读取本栏目页面，按 `weight` 排序；可配置 `title`、`summary`、`version`、`platformSummary`，无须修改导航或手工添加卡片。未准备完成的页面使用 `draft: true`，不在正式构建中展示。详情模板已通用化，新产品通过下述 Markdown 字段提供自己的内容，不继承 Companion 的平台、安装方式或声明。目录布局为 `layouts/products/list.html`，样式为 `static/css/products-directory.css`。
+
+## 产品模板通用化（2026-11-14）
+
+本轮按已确认迁移方案完成第一步：只调整模板与现有 Companion 中英文配置，不迁移 Orbis、Brew Manager、CoralUI，不改 GitHub Website、不提交或发布。以下字段为当前维护接口；后文较早轮次的状态和命令清单是历史记录。
+
+实施与检查顺序：
+
+- [x] 添加隔离 Hugo 构建回归，先复现其它产品出现 Companion 名称和固定说明、空区块及无效链接的问题。
+- [x] 通用化 `layouts/products/single.html`，将专属文案移到两份 Companion Markdown；安装正文和兼容承诺保持原文。
+- [x] 下载型产品、最简产品、直接安装链接及截图／FAQ／收尾区块分别验证；临时样例不进入正式内容目录。
+- [x] 完成格式、lint、整站构建、已有浏览器回归与差异审查，结果见下。
+
+### Markdown 配置约定
+
+页面放在 `content/products/<slug>/index.md`，英文为同目录 `index.en.md`。图片使用同目录本地 PNG、JPEG、WebP 等位图资源。现有 `static/css/companion-product.css` 保留历史文件名，所有产品共用该样式，本轮不重新设计页面。
+
+| 字段                                        | 用途与缺省行为                                                                                                                                |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`、`description`、`summary`、`weight` | 产品名称、搜索摘要、目录摘要、排序；名称同时用于页面标题和页脚。                                                                              |
+| `brandName`、`eyebrow`                      | 页头简称和首屏小标题；省略时使用产品名称。                                                                                                    |
+| `subtitle`                                  | 主标题的多行文本数组；省略时使用产品名称。                                                                                                    |
+| `intro`、`version`                          | 首屏介绍与版本；未配置时不显示对应内容。                                                                                                      |
+| `supportLines`                              | 兼容范围／前提条件的多行数组；没有默认平台或 Desktop 结论。                                                                                   |
+| `repository`、`issues`                      | 源码和反馈地址；省略时隐藏对应链接。                                                                                                          |
+| `actionLabel`                               | 主按钮文字，默认“安装使用”／“Get started”。                                                                                                   |
+| `screenshot`、`screenshotAlt`               | Bundle 内截图文件名及替代文字；无截图则隐藏，文件名配置错误会使构建失败，避免发布空图片框。替代文字缺省为产品名，但正式产品应明确填写。       |
+| `screenshotCaption`、`screenshotNote`       | 截图标题与补充说明；无配置则不显示图注。                                                                                                      |
+| `features`                                  | `title` / `text` 数组；无功能项则隐藏功能区和导航。                                                                                           |
+| `featureHeading`、`featureIntro`            | 功能区标题数组及介绍；标题缺省为通用“功能一览”。                                                                                              |
+| `installHeading`、`installNote`             | 安装区标题数组及提示；标题缺省为通用“安装与使用”。                                                                                            |
+| `installLink`                               | `url` / `label` 对象，可指向 npm、Releases 或安装指南；取代原来仅限 npm 的字段；安装区链接自动附加产品 `version`，无需在 label 重复填写版本。 |
+| `faq`                                       | `question` / `answer` 数组；无条目则隐藏整个区域。                                                                                            |
+| `closing`                                   | `title` / `text` 对象；无配置则隐藏收尾区。                                                                                                   |
+| `license`、`disclaimer`                     | 产品各自的许可说明和独立声明；不默认 MIT 或 DeepSeek。                                                                                        |
+
+Markdown 正文用于详细安装／使用说明：有正文时显示 `#install` 区块，主按钮先引导到该区；无正文但有 `installLink.url` 时主按钮直接打开安装入口；两者都没有则不显示安装按钮或安装导航。不要给纯下载型产品复制 Companion 的浏览器准备步骤。
+
+翻译文件只保留通用界面文案。每个产品的功能、兼容说明和免责声明在自己的中英文 Markdown 中维护；没有译文则不展示语言菜单。`npm` 专属字段已从 Companion 页面配置移除，其地址与按钮文字由 `installLink` 保存；市场索引、安装版本和全部安装正文没有改变。
+
+回归命令：
+
+```sh
+node --test tests/product-template.test.cjs tests/product-theme.test.cjs
+```
+
+模板回归调用本机 Hugo，临时生成测试产品，构建输出与资源缓存均写入系统临时目录并在结束时清理；不会生成可发布的样例产品或改写正式内容。
+
+### 本轮验收
+
+Hugo Extended 0.136.4 整站 minify 构建通过，无缺失翻译提示；模板／主题测试 **15/15**，已有浏览器回归 **20/20**。另以 1440px、390px 检查中英 Companion 与两个临时通用产品，共 8 个页面／尺寸组合；标题、内容、所有页内锚点、深浅色、无横向溢出与页面脚本错误均通过，桌面／手机截图已目视检查。Browser 插件未提供，使用环境已有的隔离 Playwright，不读取个人浏览器 profile。
+
+Prettier、Biome lint、Node 语法、TOML 解析／中英翻译 key 一致性、`git diff --check` 通过。独立只读复审未发现 Blocker／High／Medium；安装区按钮版本另外补充 RED→GREEN 回归，使用产品 `version` 自动输出。中英文安装 Markdown 正文逐字未改，三个博客条目与 LoveIt 主题源码未动。临时预览服务在结束时停止，测试样例和构建输出清理；本轮未 commit／push／部署，也未改 GitHub Website 或 npm。
+
+### 剩余迁移工作
+
+1. 将三个工具的正文整理成产品内容，核准安装包、平台和兼容范围；迁移截图并核对来源。
+2. 在各自产品配置保留 `/caelum-orbis/`、`/brew-manager/`、`/openclaw-coralui/` 的 aliases，移除原博客条目。
+3. 核对首页、文章归档、分类、搜索、RSS 和产品目录，检查旧地址跳转与站内链接。
+4. 验收桌面／手机、深浅色、语言及真实下载入口，审核后再由用户确认提交和发布。
+5. 旧 GitHub Website 通过跳转可继续使用；新产品页上线后可选更新为直接地址。CoralUI 可单独补设 Website。
 
 ## 本地调试
 
@@ -49,7 +109,7 @@ git push origin master
 
 在 Actions 中等待 Deploy Hugo site to Pages 成功，再打开正式页面。线上确认后，可将 Companion 仓库 About 的 Website 改为上述产品地址，不勾选自动使用项目 Pages；市场索引继续使用 `/dsh-deepseek-companion/index.json`，不要改成介绍页。
 
-当前只是独立产品页，博客首页及主题保持原有布局。未来新产品可以复用模板，但当前文案中的 Companion 固定文字需一并参数化。
+产品详情使用独立模板，与博客共用外观和语言控件；无需修改 LoveIt 主题源码。
 
 ## 精选英文内容与主题（2026-11-13）
 

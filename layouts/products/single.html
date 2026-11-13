@@ -1,3 +1,11 @@
+{{- $installLink := .Params.installLink | default dict -}}
+{{- $hasInstall := ne .Content "" -}}
+{{- $primaryURL := "" -}}
+{{- if $hasInstall -}}
+  {{- $primaryURL = "#install" -}}
+{{- else -}}
+  {{- $primaryURL = $installLink.url | default "" -}}
+{{- end -}}
 <!doctype html>
 <html lang="{{ .Site.LanguageCode }}" data-default-theme="{{ .Site.Params.defaultTheme | default "auto" }}">
 <head>
@@ -11,7 +19,7 @@
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  {{ with .Resources.GetMatch .Params.screenshot }}<meta property="og:image" content="{{ .Permalink }}">{{ end }}
+  {{ with .Params.screenshot }}{{ with $.Resources.GetMatch . }}<meta property="og:image" content="{{ .Permalink }}">{{ else }}{{ errorf "Product %s: screenshot %q was not found in its page bundle" $.File.Path . }}{{ end }}{{ end }}
   {{ partial "site-preferences-assets.html" . }}
   <link rel="stylesheet" href="{{ "css/companion-product.css" | relURL }}">
 </head>
@@ -19,30 +27,73 @@
   <script>window.sitePreferences.apply();</script>
   <a class="skip" href="#main">{{ i18n "cpSkip" }}</a>
   <header class="site-header wrap">
-    <a class="brand" href="{{ "/" | relLangURL }}">Caelum<span> / </span>Companion</a>
-    <nav aria-label="{{ i18n "cpNav" }}"><a href="{{ "/products/" | relLangURL }}">{{ i18n "cpProducts" }}</a><a href="#features">{{ i18n "cpFeatures" }}</a><a href="#install">{{ i18n "cpInstall" }}</a><a href="{{ .Params.repository }}">GitHub ↗</a>{{ partial "site-controls.html" . }}</nav>
+    <a class="brand" href="{{ "/" | relLangURL }}">Caelum<span> / </span>{{ .Params.brandName | default .Title }}</a>
+    <nav aria-label="{{ i18n "cpNav" }}">
+      <a href="{{ "/products/" | relLangURL }}">{{ i18n "cpProducts" }}</a>
+      {{ if .Params.features }}<a href="#features">{{ i18n "cpFeatures" }}</a>{{ end }}
+      {{ if $hasInstall }}<a href="#install">{{ i18n "cpInstall" }}</a>{{ end }}
+      {{ with .Params.repository }}<a href="{{ . }}">GitHub ↗</a>{{ end }}
+      {{ partial "site-controls.html" . }}
+    </nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <p class="eyebrow">DEEPSEEK COMPANION <span>— {{ .Params.version }}</span></p>
-      <h1 id="hero-title">{{ range .Params.subtitle }}<span>{{ . }}</span>{{ end }}</h1>
-      <p class="intro">{{ .Params.intro }}</p>
+      <p class="eyebrow">{{ .Params.eyebrow | default (upper .Title) }}{{ with .Params.version }} <span>— {{ . }}</span>{{ end }}</p>
+      <h1 id="hero-title">{{ with .Params.subtitle }}{{ range . }}<span>{{ . }}</span>{{ end }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ with .Params.intro }}<p class="intro">{{ . }}</p>{{ end }}
+      {{ if or $primaryURL .Params.repository .Params.supportLines }}
       <div class="hero-bottom">
-      <div class="actions"><a class="button primary" href="#install">{{ i18n "cpStart" }} <span aria-hidden="true">↗</span></a><a class="button secondary" href="{{ .Params.repository }}">{{ i18n "cpSource" }} <span aria-hidden="true">↗</span></a></div>
-      <p class="support">{{ i18n "cpSupport" }}<br>{{ i18n "cpDesktop" }}</p>
+        {{ if or $primaryURL .Params.repository }}
+        <div class="actions">
+          {{ with $primaryURL }}<a class="button primary" href="{{ . }}">{{ $.Params.actionLabel | default (i18n "cpStart") }} <span aria-hidden="true">↗</span></a>{{ end }}
+          {{ with .Params.repository }}<a class="button secondary" href="{{ . }}">{{ i18n "cpSource" }} <span aria-hidden="true">↗</span></a>{{ end }}
+        </div>
+        {{ end }}
+        {{ with .Params.supportLines }}<p class="support">{{ range $i, $line := . }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</p>{{ end }}
       </div>
+      {{ end }}
     </section>
+    {{ with .Params.screenshot }}{{ with $.Resources.GetMatch . }}
     <section class="showcase wrap" aria-label="{{ i18n "cpScreenshot" }}">
-      <figure>{{ with .Resources.GetMatch .Params.screenshot }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Params.screenshotAlt }}" fetchpriority="high">{{ end }}<figcaption><span>{{ i18n "cpCaption" }}</span>{{ i18n "cpEvidence" }}</figcaption></figure>
+      <figure>
+        <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Params.screenshotAlt | default $.Title }}" fetchpriority="high">
+        {{ if or $.Params.screenshotCaption $.Params.screenshotNote }}<figcaption>{{ with $.Params.screenshotCaption }}<span>{{ . }}</span>{{ end }}{{ with $.Params.screenshotNote }}{{ . }}{{ end }}</figcaption>{{ end }}
+      </figure>
     </section>
+    {{ end }}{{ end }}
+    {{ with .Params.features }}
     <section id="features" class="features wrap" aria-labelledby="features-title">
-      <div class="section-heading"><p class="eyebrow">{{ i18n "cpFeatureEyebrow" }}</p><h2 id="features-title">{{ range $i, $line := split (i18n "cpFeatureHeading") "|" }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h2><p>{{ i18n "cpFeatureIntro" }}</p></div>
-      <div class="feature-list">{{ range $i, $feature := .Params.features }}<article><span class="number">0{{ add $i 1 }}</span><div><h3>{{ $feature.title }}</h3><p>{{ $feature.text }}</p></div></article>{{ end }}</div>
+      <div class="section-heading">
+        <p class="eyebrow">{{ i18n "cpFeatureEyebrow" }}</p>
+        <h2 id="features-title">{{ range $i, $line := $.Params.featureHeading | default (slice (i18n "cpFeatureHeading")) }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h2>
+        {{ with $.Params.featureIntro }}<p>{{ . }}</p>{{ end }}
+      </div>
+      <div class="feature-list">{{ range $i, $feature := . }}<article><span class="number">{{ printf "%02d" (add $i 1) }}</span><div><h3>{{ $feature.title }}</h3><p>{{ $feature.text }}</p></div></article>{{ end }}</div>
     </section>
-    <section id="install" class="install-section"><div class="wrap install-layout"><aside><p class="eyebrow">{{ i18n "cpGetStarted" }}</p><h2>{{ range $i, $line := split (i18n "cpInstallHeading") "|" }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h2><p>{{ i18n "cpInstallNote" }}</p><a class="text-link" href="{{ .Params.npm }}">{{ i18n "cpNpm" }} {{ .Params.version }} ↗</a></aside><div class="prose">{{ .Content }}</div></div></section>
-    <section class="faq wrap" aria-labelledby="faq-title"><p class="eyebrow">{{ i18n "cpFaqEyebrow" }}</p><h2 id="faq-title">{{ i18n "cpFaq" }}</h2>{{ range .Params.faq }}<details><summary>{{ .question }}</summary><p>{{ .answer }}</p></details>{{ end }}</section>
-    <section class="closing wrap"><h2>{{ i18n "cpClosing" }}</h2><p>{{ i18n "cpClosingNote" }}</p><a class="button primary" href="#install">{{ i18n "cpSteps" }} ↗</a><a class="text-link" href="{{ .Params.issues }}">{{ i18n "cpFeedback" }} ↗</a></section>
+    {{ end }}
+    {{ if $hasInstall }}
+    <section id="install" class="install-section"><div class="wrap install-layout">
+      <aside>
+        <p class="eyebrow">{{ i18n "cpGetStarted" }}</p>
+        <h2>{{ range $i, $line := .Params.installHeading | default (slice (i18n "cpInstallHeading")) }}{{ if $i }}<br>{{ end }}{{ $line }}{{ end }}</h2>
+        {{ with .Params.installNote }}<p>{{ . }}</p>{{ end }}
+        {{ with $installLink.url }}<a class="text-link" href="{{ . }}">{{ $installLink.label | default (i18n "cpStart") }}{{ with $.Params.version }} {{ . }}{{ end }} ↗</a>{{ end }}
+      </aside>
+      <div class="prose">{{ .Content }}</div>
+    </div></section>
+    {{ end }}
+    {{ with .Params.faq }}
+    <section class="faq wrap" aria-labelledby="faq-title"><p class="eyebrow">{{ i18n "cpFaqEyebrow" }}</p><h2 id="faq-title">{{ i18n "cpFaq" }}</h2>{{ range . }}<details><summary>{{ .question }}</summary><p>{{ .answer }}</p></details>{{ end }}</section>
+    {{ end }}
+    {{ with .Params.closing }}
+    <section class="closing wrap">
+      {{ with .title }}<h2>{{ . }}</h2>{{ end }}
+      {{ with .text }}<p>{{ . }}</p>{{ end }}
+      {{ with $primaryURL }}<a class="button primary" href="{{ . }}">{{ if $hasInstall }}{{ i18n "cpSteps" }}{{ else }}{{ $.Params.actionLabel | default (i18n "cpStart") }}{{ end }} ↗</a>{{ end }}
+      {{ with $.Params.issues }}<a class="text-link" href="{{ . }}">{{ i18n "cpFeedback" }} ↗</a>{{ end }}
+    </section>
+    {{ end }}
   </main>
-  <footer class="wrap"><a href="{{ "/" | relLangURL }}">{{ i18n "cpBack" }}</a><p>DeepSeek Companion · {{ i18n "cpLicense" }}<br>{{ i18n "cpDisclaimer" }}</p></footer>
+  <footer class="wrap"><a href="{{ "/" | relLangURL }}">{{ i18n "cpBack" }}</a><p>{{ .Title }}{{ with .Params.license }} · {{ . }}{{ end }}{{ with .Params.disclaimer }}<br>{{ . }}{{ end }}</p></footer>
 </body>
 </html>

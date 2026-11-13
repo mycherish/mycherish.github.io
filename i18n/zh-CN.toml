@@ -19,53 +19,26 @@ other = "安装使用"
 [cpSource]
 other = "查看源码"
 
-[cpSupport]
-other = "macOS · 指定版本 DSH Web · 第三方开源插件"
-
-[cpDesktop]
-other = "官方 Desktop 暂未兼容"
-
 [cpScreenshot]
 other = "真实产品界面"
-
-[cpCaption]
-other = "一个工作台，三种打开方式。"
-
-[cpEvidence]
-other = "真实发布验收画面 · Float 模式 · 内容为测试对话"
 
 [cpFeatureEyebrow]
 other = "顺手，才会常用"
 
 [cpFeatureHeading]
-other = "少一次切换，|多一点专注。"
-
-[cpFeatureIntro]
-other = "把网页对话带到 DSH 工作台里，保留熟悉的聊天方式。"
+other = "功能一览"
 
 [cpGetStarted]
 other = "开始使用"
 
 [cpInstallHeading]
-other = "几步准备，|接着聊。"
-
-[cpInstallNote]
-other = "安装前请先确认宿主版本和浏览器前置条件。"
-
-[cpNpm]
-other = "在 npm 查看"
+other = "安装与使用"
 
 [cpFaqEyebrow]
 other = "先了解，再使用"
 
 [cpFaq]
 other = "你可能想问"
-
-[cpClosing]
-other = "让对话，留在手边。"
-
-[cpClosingNote]
-other = "从一个兼容的 Web 环境开始。"
 
 [cpSteps]
 other = "查看安装步骤"
@@ -75,12 +48,6 @@ other = "反馈问题"
 
 [cpBack]
 other = "← 返回 Caelum 的博客"
-
-[cpLicense]
-other = "MIT 开源"
-
-[cpDisclaimer]
-other = "第三方项目，与 DeepSeek 官方无隶属关系。"
 
 [cpVersion]
 other = "版本"

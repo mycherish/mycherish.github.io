@@ -14,11 +14,28 @@ weight: 10
 summary: "在 DSH Web 中使用自己的 DeepSeek 网页账号，支持流式聊天、图片、历史与三种窗口。"
 platformSummary: "macOS · 指定版本 DSH Web · Desktop 暂未兼容"
 repository: "https://github.com/mycherish/dsh-deepseek-companion"
-npm: "https://www.npmjs.com/package/dsh-deepseek-companion"
 market: "https://mycherish.github.io/dsh-deepseek-companion/index.json"
 issues: "https://github.com/mycherish/dsh-deepseek-companion/issues"
 screenshot: "float.png"
 screenshotAlt: "DSH Web 中的 Companion 浮动窗口，显示 FR5_MARKET_OK 测试回复和聊天输入框"
+brandName: "Companion"
+eyebrow: "DEEPSEEK COMPANION"
+supportLines:
+  ["macOS · 指定版本 DSH Web · 第三方开源插件", "官方 Desktop 暂未兼容"]
+screenshotCaption: "一个工作台，三种打开方式。"
+screenshotNote: "真实发布验收画面 · Float 模式 · 内容为测试对话"
+featureIntro: "把网页对话带到 DSH 工作台里，保留熟悉的聊天方式。"
+installNote: "安装前请先确认宿主版本和浏览器前置条件。"
+license: "MIT 开源"
+disclaimer: "第三方项目，与 DeepSeek 官方无隶属关系。"
+featureHeading: ["少一次切换，", "多一点专注。"]
+installHeading: ["几步准备，", "接着聊。"]
+closing:
+  title: "让对话，留在手边。"
+  text: "从一个兼容的 Web 环境开始。"
+installLink:
+  url: "https://www.npmjs.com/package/dsh-deepseek-companion"
+  label: "在 npm 查看"
 features:
   - title: "熟悉的聊天能力"
     text: "流式回答、Markdown 与代码展示，支持切换深度思考、智能搜索和停止生成。"
