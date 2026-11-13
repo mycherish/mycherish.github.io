@@ -93,3 +93,21 @@ other = "Products are being prepared."
 
 [cpTheme]
 other = "Toggle light and dark mode"
+
+[siteTheme]
+other = "Appearance"
+
+[siteLight]
+other = "Light"
+
+[siteDark]
+other = "Dark"
+
+[siteAuto]
+other = "System"
+
+[siteLanguage]
+other = "Language"
+
+[siteLanguageShort]
+other = "EN"

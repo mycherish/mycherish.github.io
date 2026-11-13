@@ -3,9 +3,8 @@ const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { join } = require("node:path");
 const { runInNewContext } = require("node:vm");
-
 const source = readFileSync(
-  join(__dirname, "../static/js/companion-theme.js"),
+  join(__dirname, "../static/js/site-preferences.js"),
   "utf8",
 );
 function boot({
@@ -15,23 +14,22 @@ function boot({
   defaultTheme = "auto",
 } = {}) {
   const events = {};
-  const attributes = {};
-  let onClick;
-  let onMedia;
-  const button = {
-    hidden: true,
-    setAttribute: (key, value) => {
-      attributes[key] = value;
-    },
-    addEventListener: (_, callback) => {
-      onClick = callback;
+  const root = { dataset: { defaultTheme } };
+  const body = {
+    setAttribute: (k, v) => {
+      body[k] = v;
     },
   };
-  const root = { dataset: { defaultTheme } };
   const media = {
     matches: systemDark,
-    addEventListener: (_, callback) => {
-      onMedia = callback;
+    addEventListener: (_, cb) => {
+      events.media = cb;
+    },
+  };
+  const window = {
+    matchMedia: () => media,
+    addEventListener: (key, cb) => {
+      events[key] = cb;
     },
   };
   const storage = {
@@ -39,88 +37,92 @@ function boot({
       if (blocked) throw Error("blocked");
       return stored;
     },
-    setItem: (_, value) => {
+    setItem: (_, v) => {
       if (blocked) throw Error("blocked");
-      stored = value;
+      stored = v;
     },
   };
   runInNewContext(source, {
+    window,
+    localStorage: storage,
     document: {
       documentElement: root,
-      querySelector: () => button,
-      addEventListener: (_, callback) => {
-        events.ready = callback;
+      body,
+      querySelectorAll: () => [],
+      addEventListener: (key, cb) => {
+        events[key] = cb;
       },
     },
-    window: {
-      matchMedia: () => media,
-      addEventListener: (_, callback) => {
-        events.storage = callback;
-      },
-    },
-    localStorage: storage,
   });
   return {
     root,
-    button,
-    attributes,
-    ready: () => events.ready(),
-    click: () => onClick(),
+    body,
+    choose: window.sitePreferences.choose,
     stored: () => stored,
-    changeSystem: (dark) => {
+    system: (dark) => {
       media.matches = dark;
-      onMedia();
+      events.media();
     },
-    storageEvent: (key, newValue) => events.storage({ key, newValue }),
+    storage: (key, newValue) => events.storage({ key, newValue }),
   };
 }
-test("blog's stored dark takes precedence over a light OS before DOM ready", () => {
+test("saved dark overrides light OS before ready and updates blog body", () => {
   const s = boot({ stored: "dark" });
   assert.equal(s.root.dataset.theme, "dark");
+  assert.equal(s.body.theme, "dark");
 });
-test("blog's stored light takes precedence over a dark OS", () => {
+test("saved light overrides dark OS even after OS changes", () => {
   const s = boot({ stored: "light", systemDark: true });
-  assert.equal(s.root.dataset.theme, "light");
-  s.changeSystem(false);
-  s.changeSystem(true);
+  s.system(false);
+  s.system(true);
   assert.equal(s.root.dataset.theme, "light");
 });
-test("without a saved choice the page tracks system changes", () => {
+test("no saved choice tracks system changes", () => {
   const s = boot();
-  assert.equal(s.root.dataset.theme, "light");
-  s.changeSystem(true);
+  s.system(true);
   assert.equal(s.root.dataset.theme, "dark");
-  s.changeSystem(false);
+  s.system(false);
   assert.equal(s.root.dataset.theme, "light");
 });
-test("toggle persists LoveIt's value and exposes its accessible state", () => {
+test("explicit selection persists compatible light and dark values", () => {
   const s = boot();
-  s.ready();
-  assert.equal(s.button.hidden, false);
-  s.click();
+  s.choose("dark");
   assert.equal(s.stored(), "dark");
-  assert.equal(s.attributes["aria-pressed"], "true");
-  s.click();
+  s.choose("light");
   assert.equal(s.stored(), "light");
-  assert.equal(s.attributes["aria-pressed"], "false");
 });
-test("theme changes in another tab update the page, unrelated storage does not", () => {
+test("auto can be restored after manual choice and tracks OS", () => {
   const s = boot();
-  s.storageEvent("theme", "dark");
+  s.choose("dark");
+  s.choose("auto");
+  assert.equal(s.stored(), "auto");
+  assert.equal(s.root.dataset.theme, "light");
+  s.system(true);
   assert.equal(s.root.dataset.theme, "dark");
-  s.storageEvent("other", "light");
+  assert.equal(s.root.dataset.themePreference, "auto");
+});
+test("other tabs update preference, unrelated keys do not", () => {
+  const s = boot();
+  s.storage("theme", "dark");
+  s.storage("other", "light");
   assert.equal(s.root.dataset.theme, "dark");
-  s.storageEvent("theme", null);
+  s.storage("theme", null);
   assert.equal(s.root.dataset.theme, "light");
 });
-test("clearing storage falls back to the configured default", () => {
+test("clearing storage respects configured default", () => {
   const s = boot({ stored: "dark", defaultTheme: "light", systemDark: true });
-  s.storageEvent(null, null);
+  s.storage(null, null);
   assert.equal(s.root.dataset.theme, "light");
 });
-test("blocked storage does not prevent rendering or a local toggle", () => {
+test("blocked storage does not prevent local selection", () => {
   const s = boot({ blocked: true });
-  s.ready();
-  s.click();
+  s.choose("dark");
   assert.equal(s.root.dataset.theme, "dark");
+  s.choose("auto");
+  assert.equal(s.root.dataset.theme, "light");
+});
+test("invalid theme is ignored safely", () => {
+  const s = boot();
+  s.choose("unexpected");
+  assert.equal(s.root.dataset.themePreference, "auto");
 });

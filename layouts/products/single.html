@@ -12,14 +12,15 @@
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with .Resources.GetMatch .Params.screenshot }}<meta property="og:image" content="{{ .Permalink }}">{{ end }}
-  <script src="{{ "js/companion-theme.js" | relURL }}"></script>
+  {{ partial "site-preferences-assets.html" . }}
   <link rel="stylesheet" href="{{ "css/companion-product.css" | relURL }}">
 </head>
 <body>
+  <script>window.sitePreferences.apply();</script>
   <a class="skip" href="#main">{{ i18n "cpSkip" }}</a>
   <header class="site-header wrap">
     <a class="brand" href="{{ "/" | relLangURL }}">Caelum<span> / </span>Companion</a>
-    <nav aria-label="{{ i18n "cpNav" }}"><a href="{{ "/products/" | relLangURL }}">{{ i18n "cpProducts" }}</a><a href="#features">{{ i18n "cpFeatures" }}</a><a href="#install">{{ i18n "cpInstall" }}</a><a href="{{ .Params.repository }}">GitHub ↗</a>{{ range .Translations }}<a href="{{ .RelPermalink }}" lang="{{ .Lang }}" hreflang="{{ .Lang }}">{{ .Language.LanguageName }}</a>{{ end }}<button class="theme-toggle" type="button" aria-label="{{ i18n "cpTheme" }}" aria-pressed="false" hidden>◐</button></nav>
+    <nav aria-label="{{ i18n "cpNav" }}"><a href="{{ "/products/" | relLangURL }}">{{ i18n "cpProducts" }}</a><a href="#features">{{ i18n "cpFeatures" }}</a><a href="#install">{{ i18n "cpInstall" }}</a><a href="{{ .Params.repository }}">GitHub ↗</a>{{ partial "site-controls.html" . }}</nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">

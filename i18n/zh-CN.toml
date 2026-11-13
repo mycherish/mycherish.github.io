@@ -93,3 +93,21 @@ other = "产品正在准备中。"
 
 [cpTheme]
 other = "切换深浅色模式"
+
+[siteTheme]
+other = "外观"
+
+[siteLight]
+other = "浅色"
+
+[siteDark]
+other = "深色"
+
+[siteAuto]
+other = "跟随系统"
+
+[siteLanguage]
+other = "语言"
+
+[siteLanguageShort]
+other = "中文"

@@ -1,0 +1,20 @@
+<div class="site-tools" data-site-tools>
+  <details class="site-tool site-theme-menu">
+    <summary aria-label="{{ i18n "siteTheme" }}" title="{{ i18n "siteTheme" }}">
+      <span data-theme-icon="light">{{ partial "site-icon.html" "sun" }}</span><span data-theme-icon="dark">{{ partial "site-icon.html" "moon" }}</span><span data-theme-icon="auto">{{ partial "site-icon.html" "system" }}</span>
+    </summary>
+    <div class="site-tool-panel" aria-label="{{ i18n "siteTheme" }}">
+      {{ range slice (dict "value" "light" "label" "siteLight" "icon" "sun") (dict "value" "dark" "label" "siteDark" "icon" "moon") (dict "value" "auto" "label" "siteAuto" "icon" "system") }}
+      <button type="button" data-theme-choice="{{ .value }}" aria-pressed="false">{{ partial "site-icon.html" .icon }}<span>{{ i18n .label }}</span><span class="site-choice-check" aria-hidden="true">✓</span></button>
+      {{ end }}
+    </div>
+  </details>
+  {{ if gt (len .AllTranslations) 1 }}
+  <details class="site-tool site-language-menu">
+    <summary aria-label="{{ i18n "siteLanguage" }}" title="{{ i18n "siteLanguage" }}">{{ partial "site-icon.html" "globe" }}<span>{{ i18n "siteLanguageShort" }}</span></summary>
+    <div class="site-tool-panel" aria-label="{{ i18n "siteLanguage" }}">
+      {{ range .AllTranslations }}<a href="{{ .RelPermalink }}" lang="{{ .Lang }}" hreflang="{{ .Lang }}"{{ if eq .Lang $.Lang }} aria-current="page"{{ end }}>{{ .Language.LanguageName }}{{ if eq .Lang $.Lang }}<span aria-hidden="true">✓</span>{{ end }}</a>{{ end }}
+    </div>
+  </details>
+  {{ end }}
+</div>

@@ -1,0 +1,18 @@
+/* Content homepages need normal flow, not the theme's profile-only 16vh shift. */
+.home[data-home="content"] .home-profile {
+  transform: none;
+  padding: 2rem 0 1.5rem;
+}
+.home[data-home="content"] .single {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+.home[data-home="content"] #content {
+  padding-top: 0.5rem;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 680px) {
+  .home[data-home="content"] .home-profile {
+    padding-top: 1.5rem;
+  }
+}

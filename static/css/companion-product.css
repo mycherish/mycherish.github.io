@@ -409,19 +409,6 @@ nav {
   flex-wrap: wrap;
   align-items: center;
 }
-.theme-toggle {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 4px 10px;
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 17px;
-}
-.theme-toggle:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-}
 @media (max-width: 760px) {
   nav {
     gap: 14px;

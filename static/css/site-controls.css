@@ -1,0 +1,169 @@
+/* Shared controls only; page layouts and content colors remain independent. */
+.site-tools {
+  --tools-bg: #fff;
+  --tools-text: #20251f;
+  --tools-muted: #f0f2ee;
+  --tools-line: #dce2d7;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font:
+    14px/1.4 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: var(--tools-text);
+  vertical-align: middle;
+  text-align: left;
+}
+:root[data-theme="dark"] .site-tools {
+  --tools-bg: #242a26;
+  --tools-text: #eef1eb;
+  --tools-muted: #333d35;
+  --tools-line: #455048;
+}
+.site-tools .site-tool {
+  position: relative;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.site-tools summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 9px;
+  border-radius: 8px;
+  list-style: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.site-tools summary::-webkit-details-marker {
+  display: none;
+}
+.site-tools summary:hover,
+.site-tools details[open] summary {
+  background: var(--tools-muted);
+}
+.site-tools .site-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+.site-tools [data-theme-icon] {
+  display: none;
+}
+:root[data-theme-preference="light"] .site-tools [data-theme-icon="light"],
+:root[data-theme-preference="dark"] .site-tools [data-theme-icon="dark"],
+:root[data-theme-preference="auto"] .site-tools [data-theme-icon="auto"] {
+  display: inline;
+}
+.site-tools .site-tool-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1100;
+  min-width: 170px;
+  padding: 6px;
+  border: 1px solid var(--tools-line);
+  border-radius: 12px;
+  background: var(--tools-bg);
+  color: var(--tools-text);
+  box-shadow: 0 8px 28px #0002;
+}
+.site-tools .site-tool-panel button,
+.site-tools .site-tool-panel a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  margin: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+}
+.site-tools .site-tool-panel button:hover,
+.site-tools .site-tool-panel a:hover {
+  background: var(--tools-muted);
+}
+.site-tools .site-tool-panel button[aria-pressed="true"],
+.site-tools .site-tool-panel a[aria-current="page"] {
+  background: var(--tools-muted);
+  font-weight: 600;
+}
+.site-tools .site-choice-check {
+  margin-left: auto;
+  visibility: hidden;
+}
+.site-tools [aria-pressed="true"] .site-choice-check {
+  visibility: visible;
+}
+.site-tools a[aria-current="page"] span {
+  margin-left: auto;
+}
+.site-tools summary:focus-visible,
+.site-tools button:focus-visible,
+.site-tools a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+#menu-mobile .site-tools {
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px 14px;
+}
+#menu-mobile .site-tools .site-tool-panel {
+  position: fixed;
+  top: auto;
+  right: 16px;
+  left: 16px;
+  width: auto;
+  margin-top: 8px;
+}
+@media (max-width: 760px) {
+  .site-tools summary {
+    min-width: 44px;
+    height: 44px;
+  }
+  .site-tools .site-tool-panel button,
+  .site-tools .site-tool-panel a {
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-tools summary,
+  .site-tools .site-tool-panel button,
+  .site-tools .site-tool-panel a {
+    transition: background-color 0.15s ease;
+  }
+}
+@media (max-width: 760px) {
+  .site-header .site-tools .site-tool-panel {
+    position: fixed;
+    top: auto;
+    right: 18px;
+    left: 18px;
+    width: auto;
+    margin-top: 8px;
+  }
+}
+/* Release clipping only while a tool menu is open. Keep LoveIt's normal
+   search layout intact; flow-root still contains its floated menu-inner. */
+#header-desktop .header-wrapper .menu:has(.site-tool[open]) {
+  overflow: visible;
+  display: flow-root;
+}

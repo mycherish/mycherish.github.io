@@ -41,7 +41,7 @@ git add config.toml content/_index.en.md \
   content/products/_index.en.md content/products/deepseek-companion/index.en.md \
   i18n/en.toml i18n/zh-CN.toml \
   layouts/products/list.html layouts/products/single.html \
-  static/css/companion-product.css static/js/companion-theme.js \
+  static/css/companion-product.css static/js/site-preferences.js \
   tests/product-theme.test.cjs docs/companion-product-page.md
 git commit -m "feat(site): localize product pages and share theme preference / 补齐英文产品页与主题同步"
 git push origin master
@@ -63,7 +63,7 @@ git push origin master
 - 英文导航只展示 Home、Products、GitHub；英文搜索暂时关闭，不保留主题的示例 Algolia 配置；英文资料不保留占位社交账号或失效头像。
 - 产品详情通过 `.Translations` 展示实际存在的译文，博客与目录沿用 LoveIt 的译文选择；只有一份正文时不会出现不存在的对应页。
 
-产品详情的独立模板原先只跟随 `prefers-color-scheme`，导致忽略博客手动深色选择。现在由 `static/js/companion-theme.js` 在绘制前读取同源 `localStorage.theme`，沿用 LoveIt 的 light / dark 值；没有手动选择时使用站点默认设置和系统偏好。详情页提供切换按钮，并响应其它标签页的主题变化。禁用存储时保留当前页切换能力。中文、英文、目录和博客共用同一偏好；预览时 `localhost` 和 `127.0.0.1` 是不同 origin，请全程使用同一种主机名。
+产品详情的独立模板原先只跟随 `prefers-color-scheme`，导致忽略博客手动深色选择。现在由 `static/js/site-preferences.js` 在绘制前读取同源 `localStorage.theme`，沿用 LoveIt 的 light / dark 值；没有手动选择时使用站点默认设置和系统偏好。详情页提供切换按钮，并响应其它标签页的主题变化。禁用存储时保留当前页切换能力。中文、英文、目录和博客共用同一偏好；预览时 `localhost` 和 `127.0.0.1` 是不同 origin，请全程使用同一种主机名。
 
 本轮预览地址：`/en/`、`/en/products/`、`/en/products/deepseek-companion/`。本地重启 Hugo 后检查。首次产品页提交为 `2aa1073`，按用户要求仅本地提交、未推送；本轮多语言和主题修复留待 Review，不自动提交。
 
@@ -80,3 +80,40 @@ git diff --check
 ### 本轮验证结果
 
 Hugo Extended 0.136.4 整站构建通过，格式、JS lint / 语法、TOML 与翻译 key 完整性、`git diff --check` 通过，主题单测 7/7。基线实际复现“系统浅色 + 博客手动深色 → 产品变浅色”，修复后同条件通过。隔离 Playwright 在 1440px / 390px 验证英文首页有效菜单、产品目录 / 详情、双向译文、安装跳转、FAQ、共享截图、无横向溢出与本地资源错误；另验证博客真实切换主题往返、跨标签页同步、系统变化、减少动态效果与禁用存储。未修改 LoveIt 主题源码，未重跑插件聊天验收，未推送或部署。回归截图和临时驱动只保存在本机临时目录。
+
+## 统一外观与语言控件
+
+当前博客首页、文章、目录与产品详情共用 `layouts/partials/site-controls.html`、`site-icon.html`、`site-preferences-assets.html` 和 `static/css/site-controls.css`。博客页头及基础模板通过站点级 `layouts/partials/header.html` / `layouts/_default/baseof.html` 覆盖，LoveIt 主题源码未修改；升级 LoveIt 时需比较这两个覆盖文件与上游差异。
+
+主题菜单提供浅色、深色、跟随系统，以 `localStorage.theme` 的 light / dark / auto 保存。无选择时使用站点默认；每次同时更新根节点 data-theme 与 LoveIt body theme。旧页面专用脚本已删除，旧 theme-switch 按钮已移除，不同时运行两套切换逻辑。跨标签页、存储禁用、键盘 Tab / Enter / Escape、外部点击关闭及焦点返回均为验证项。原 7 项主题断言已迁移并扩充为 9 项。
+
+语言菜单显示当前语言简称，只列真实存在的 `.AllTranslations`，没有译文的文章不显示语言菜单。采用原生 details / summary 和普通按钮、链接，不冒充需要额外方向键协议的 ARIA menu。图标为共享内联 SVG，默认透明、悬停浅底、焦点可见；手机点击目标至少 44px，减少动态效果时关闭控件过渡。
+
+英文与主题同步已于 `7681484` 本地提交；本节控件统一为后续未提交改动，不自动推送。较早命令块是上一轮文件清单，本轮提交前以 `git status` 为准，并纳入新 partial、baseof、site-controls.css 和 site-preferences.js，以及旧 companion-theme.js 的删除。
+
+### 统一控件验证
+
+Hugo 0.136.4 整站构建、格式、JS lint、9 项主题回归与差异检查通过。使用已有 Playwright（无独立 Browser 插件）在 1440px / 390px 验证中英首页、目录、详情共 12 条路径：三档主题、系统偏好变化、选中态、语言面板、Escape 关闭与焦点返回、外部点击、无横向溢出；无译文文章隐藏语言菜单。跨页 / 跨标签页保存与减少动态效果通过。真实浏览器发现并修复英文手机页导航换行时的面板越界，修复后完整重跑。控件仅增加悬停底色过渡，尚未实施整站排版或动画重设计。
+
+后续 UI Review 优先级：清理中文导航的无效 404 入口；提高文章副文本和引用文字对比度；统一页头、内容宽度与基础字体层级；适度压缩首页个人资料区、改善产品截图可见性；再考虑菜单 / 卡片的短时反馈，避免让正文依赖滚动动画显示。整体重设计需先确认方案。
+
+### 首页真实鼠标失效修复
+
+用户复验发现首页控件不能用。实际 localhost 开发服务复现并定位：LoveIt 桌面 `.menu` 的 `overflow: hidden` 裁剪下拉；`elementFromPoint` 命中下方正文而非菜单项。之前 Playwright locator.click 自动滚动隐藏容器，掩盖了此问题。现在仅在共用菜单展开时解除桌面容器裁剪，用 flow-root 保持浮动包含，正常搜索布局保留。
+
+新增 `tests/site-controls.browser.cjs`，在真实点击前检查菜单项中心命中并用 page.mouse 点击，不允许自动滚动绕过裁剪。启动本地 Hugo 后，用已安装 Playwright 运行：
+
+```sh
+# 已在站点环境提供 playwright 时
+node --test tests/site-controls.browser.cjs
+# 或通过 PLAYWRIGHT_MODULE 指定现有 playwright 模块路径，无需修改站点依赖
+PLAYWRIGHT_MODULE=/path/to/playwright node --test tests/site-controls.browser.cjs
+```
+
+默认检查 http://localhost:1313，可用 SITE_BASE_URL 更换。真实 localhost 的 1440px / 390px 中英文首页、目录、详情共 12 条路径验证主题三档与语言实际跳转。此浏览器回归不等于插件聊天测试；本轮没有提交、推送或部署。
+
+### 英文首页介绍重叠修复
+
+LoveIt 的无文章首页默认对 `.home-profile` 使用 `translateY(16vh)`，资料区有视觉位移却不增加文档流占位，覆盖新增 Markdown 正文。修复前在 1440×900、1440×1400、390×844 均复现。站点级 `layouts/index.html` 为有正文且关闭文章列表的首页添加 `data-home=content`，由仅首页加载的 `static/css/site-home.css` 取消位移、恢复上下排列并限制正文阅读宽度；中文文章首页不使用此模式，主题源码未修改。升级主题时也需比较 index.html 覆盖。
+
+`tests/home-layout.browser.cjs` 验证资料区边界不覆盖正文及产品入口正常跳转。三种尺寸修复后通过；与统一控件共 17 项浏览器测试通过，主题单测 9 项通过。修复后桌面、手机截图已目视检查，未提交或推送。1313 当时未运行，验收使用独立 127.0.0.1:1314 构建预览。
