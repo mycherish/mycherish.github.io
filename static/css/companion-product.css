@@ -1,14 +1,14 @@
 /* Product-only stylesheet: no effect on LoveIt blog pages. */
 :root {
   color-scheme: light;
-  --bg: #fafbf9;
-  --text: #20251f;
-  --muted: #657061;
-  --line: #dce2d7;
-  --panel: #f0f3ed;
-  --accent: #385b33;
-  --button-text: #fff;
-  --code: #e8ede4;
+  --bg: var(--ui-bg);
+  --text: var(--ui-text);
+  --muted: var(--ui-muted);
+  --line: var(--ui-line);
+  --panel: var(--ui-panel);
+  --accent: var(--ui-accent);
+  --button-text: var(--ui-on-accent);
+  --code: var(--ui-panel);
 }
 * {
   box-sizing: border-box;
@@ -62,12 +62,13 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: 26px;
+  padding-block: 0;
+  min-height: 64px;
   border-bottom: 1px solid var(--line);
   gap: 20px;
 }
 .brand {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 650;
   letter-spacing: -0.4px;
 }
@@ -81,8 +82,8 @@ nav {
   font-size: 14px;
 }
 .hero {
-  padding-top: 88px;
-  padding-bottom: 54px;
+  padding-top: 48px;
+  padding-bottom: 32px;
 }
 .eyebrow {
   font-size: 12px;
@@ -97,9 +98,9 @@ nav {
   letter-spacing: 0;
 }
 h1 {
-  font-size: clamp(40px, 6.2vw, 76px);
+  font-size: clamp(36px, 4.5vw, 60px);
   line-height: 1.17;
-  letter-spacing: -3px;
+  letter-spacing: -1.8px;
   font-weight: 600;
   margin: 0 0 26px;
 }
@@ -107,10 +108,10 @@ h1 span {
   display: block;
 }
 .intro {
-  font-size: 19px;
+  font-size: 18px;
   color: var(--muted);
   max-width: 610px;
-  margin: 0 0 32px;
+  margin: 0 0 24px;
 }
 .actions {
   display: flex;
@@ -123,17 +124,19 @@ h1 span {
   justify-content: center;
   gap: 26px;
   padding: 13px 23px;
-  border-radius: 7px;
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
   border: 1px solid transparent;
-  transition:
-    transform 0.18s,
-    background 0.18s;
+  transition: background-color 0.16s;
 }
 .button:hover {
   text-decoration: none;
-  transform: translateY(-2px);
+  background-color: var(--panel);
+}
+.primary:hover {
+  background-color: var(--accent);
+  opacity: 0.92;
 }
 .primary {
   background: var(--accent);
@@ -154,7 +157,7 @@ h1 span {
   border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 18px 50px #263c2110;
+  box-shadow: 0 6px 24px #263c210a;
 }
 .showcase img {
   width: 100%;
@@ -176,7 +179,7 @@ h1 span {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 90px;
-  padding-block: 100px;
+  padding-block: 64px;
 }
 h2 {
   font-size: clamp(29px, 3.4vw, 43px);
@@ -212,7 +215,7 @@ h3 {
 }
 .install-section {
   background: var(--panel);
-  padding: 84px 0;
+  padding: 64px 0;
 }
 .install-layout {
   display: grid;
@@ -244,7 +247,7 @@ h3 {
 }
 .prose pre {
   padding: 18px 20px;
-  border-radius: 7px;
+  border-radius: 10px;
   overflow: auto;
   line-height: 1.8;
   max-width: 100%;
@@ -309,14 +312,14 @@ footer p {
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #171c19;
-  --text: #eef1eb;
-  --muted: #a3afa2;
-  --line: #354037;
-  --panel: #202822;
-  --accent: #b7d5a4;
-  --button-text: #172215;
-  --code: #303d32;
+  --bg: var(--ui-bg);
+  --text: var(--ui-text);
+  --muted: var(--ui-muted);
+  --line: var(--ui-line);
+  --panel: var(--ui-panel);
+  --accent: var(--ui-accent);
+  --button-text: var(--ui-on-accent);
+  --code: var(--ui-panel);
 }
 @media (max-width: 760px) {
   .wrap {
@@ -330,8 +333,8 @@ footer p {
     gap: 22px;
   }
   .hero {
-    padding-top: 54px;
-    padding-bottom: 36px;
+    padding-top: 32px;
+    padding-bottom: 28px;
   }
   h1 {
     letter-spacing: -1.5px;
@@ -391,7 +394,7 @@ footer p {
 .prose .highlight {
   overflow-x: auto;
   margin-block: 18px;
-  border-radius: 7px;
+  border-radius: 10px;
   background: var(--code);
 }
 .prose .highlight table {

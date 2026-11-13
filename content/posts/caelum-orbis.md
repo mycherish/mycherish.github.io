@@ -2,6 +2,7 @@
 title: "Caelum Orbis：给 AI 编程助手装一个会变色的 3D 状态球"
 date: 2026-11-10T23:58:03+08:00
 draft: false
+featuredImagePreview: "/images/dsh-orbis/hud-panel.webp"
 categories: ["DSH"]
 tags: ["DSH", "Caelum Orbis", "效率工具"]
 description: "一个常驻在 DeepSeek Harness 界面上的 3D 状态球和一块小面板，把 AI 正在思考、正在跑命令、正在等你确认，变成一眼就能看见的颜色。附安装和使用说明。"

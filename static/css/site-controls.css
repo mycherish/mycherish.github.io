@@ -1,9 +1,9 @@
 /* Shared controls only; page layouts and content colors remain independent. */
 .site-tools {
-  --tools-bg: #fff;
-  --tools-text: #20251f;
-  --tools-muted: #f0f2ee;
-  --tools-line: #dce2d7;
+  --tools-bg: var(--ui-bg, #fafbf9);
+  --tools-text: var(--ui-text, #20251f);
+  --tools-muted: var(--ui-panel, #f0f3ed);
+  --tools-line: var(--ui-line, #dce2d7);
   display: inline-flex;
   align-items: center;
   gap: 6px;

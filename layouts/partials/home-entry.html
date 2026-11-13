@@ -1,0 +1,11 @@
+<article class="editorial-entry">
+  <div class="entry-copy">
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="entry-meta"><time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "2006-01-02" }}</time>{{ with .Params.categories }} · {{ delimit . " / " }}{{ end }}</p>
+    <p class="entry-description">{{ .Description | default (.Summary | plainify) | truncate 150 }}</p>
+    <a class="entry-more" href="{{ .RelPermalink }}">{{ T "readMore" }} <span aria-hidden="true">→</span></a>
+  </div>
+  {{ $image := .Params.featuredimagepreview | default .Params.featuredimage }}
+  {{ with .Resources.GetMatch "featured-image-preview*" }}{{ $image = .RelPermalink }}{{ end }}
+  {{ with $image }}<a class="entry-image" href="{{ $.RelPermalink }}" aria-label="{{ $.Title }}"><img src="{{ . }}" alt="" loading="lazy" width="200" height="128"></a>{{ end }}
+</article>

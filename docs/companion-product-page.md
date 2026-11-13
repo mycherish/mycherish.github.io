@@ -117,3 +117,22 @@ PLAYWRIGHT_MODULE=/path/to/playwright node --test tests/site-controls.browser.cj
 LoveIt 的无文章首页默认对 `.home-profile` 使用 `translateY(16vh)`，资料区有视觉位移却不增加文档流占位，覆盖新增 Markdown 正文。修复前在 1440×900、1440×1400、390×844 均复现。站点级 `layouts/index.html` 为有正文且关闭文章列表的首页添加 `data-home=content`，由仅首页加载的 `static/css/site-home.css` 取消位移、恢复上下排列并限制正文阅读宽度；中文文章首页不使用此模式，主题源码未修改。升级主题时也需比较 index.html 覆盖。
 
 `tests/home-layout.browser.cjs` 验证资料区边界不覆盖正文及产品入口正常跳转。三种尺寸修复后通过；与统一控件共 17 项浏览器测试通过，主题单测 9 项通过。修复后桌面、手机截图已目视检查，未提交或推送。1313 当时未运行，验收使用独立 127.0.0.1:1314 构建预览。
+
+## 轻量 UI 收口（设计图确认后）
+
+按用户确认的并排设计图实施，不使用生成图里的虚构头像、文章、日期或对话。保留真实头像源、真实文章排序和分页、实际发布截图；只给已有 Orbis 文章添加本仓库已有截图的 preview 元数据。中文无效 404 菜单移除；安装步骤与支持版本不改。
+
+- `static/css/site-ui.css` 为共用字体、背景、正文 / 副文本、强调色与页头规则；产品样式和目录样式引用相同颜色基础。
+- `layouts/partials/home-intro.html` / `home-entry.html` 负责紧凑个人资料和真实文章摘要，保留原文链接和分页；不重写文章正文。
+- 首页恢复固定页头占位，资料区横排；手机缩略图不挤占摘要宽度。产品首屏收紧，真实截图前移，不添加玻璃模糊、渐变或动画依赖。
+- 悬停仅使用短时底色反馈，移除标题脉冲和按钮位移；减少动态效果设置继续生效。
+
+Hugo 0.136.4 构建、格式、JS lint 与差异检查通过；浏览器测试 20/20、主题测试 9/9。1440px / 390px 检查中英文首页 / 产品、目录和文章，无横向溢出或页面脚本错误；新回归覆盖固定页头不挡内容、手机摘要宽度、文字与主按钮对比度、文章可达及产品截图可见性。截图和临时驱动保留在本机临时目录，浏览器插件不可用，使用已有隔离 Playwright。未提交 / 推送 / 部署，不涉及插件代码或 npm 包。
+
+```sh
+# 先运行 Hugo 本地服务；复用环境中已有 Playwright，不新增站点依赖
+PLAYWRIGHT_MODULE=/path/to/playwright node --test tests/home-layout.browser.cjs tests/site-controls.browser.cjs tests/site-ui.browser.cjs
+node --test tests/product-theme.test.cjs
+```
+
+默认测试地址 http://localhost:1313；可用 SITE_BASE_URL 指定其它本机预览。旧头像和部分历史缩略图继续沿用原外部图源，网络可用性不属于新增保证。

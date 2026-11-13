@@ -1,0 +1,113 @@
+/* Shared visual foundations. Vendor theme files remain untouched. */
+:root {
+  --ui-bg: #fafbf9;
+  --ui-text: #20251f;
+  --ui-muted: #596356;
+  --ui-line: #dce2d7;
+  --ui-panel: #f0f3ed;
+  --ui-accent: #385b33;
+  --ui-on-accent: #fff;
+  --ui-radius: 10px;
+  --header-height: 64px;
+  --ui-font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+}
+:root[data-theme="dark"] {
+  --ui-bg: #171c19;
+  --ui-text: #eef1eb;
+  --ui-muted: #b3beb0;
+  --ui-line: #354037;
+  --ui-panel: #202822;
+  --ui-accent: #b7d5a4;
+  --ui-on-accent: #172215;
+}
+body {
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  font-size: 16px;
+  line-height: 1.75;
+}
+header,
+[theme="dark"] header {
+  background: var(--ui-bg);
+}
+#header-desktop .header-wrapper {
+  width: min(1120px, calc(100% - 64px));
+  margin: auto;
+  padding: 0;
+}
+#header-desktop {
+  box-shadow: none;
+  border-bottom: 1px solid var(--ui-line);
+}
+#header-desktop .header-title {
+  font-size: 20px;
+}
+#header-desktop .menu .menu-item {
+  font-size: 14px;
+  margin-inline: 8px;
+}
+#header-desktop .header-title a,
+#header-mobile .header-title a {
+  color: var(--ui-text);
+}
+#header-desktop .header-title-pre,
+#header-mobile .header-title-pre {
+  display: none;
+}
+#header-desktop .menu .menu-item.active {
+  font-weight: 600;
+  color: var(--ui-accent);
+}
+.page a:hover {
+  color: var(--ui-accent);
+}
+.single .content a,
+.single .post-meta a,
+.post-footer a,
+.pagination a {
+  color: var(--ui-accent);
+}
+.single .post-meta,
+.single .post-meta .post-publish,
+.single .content blockquote {
+  color: var(--ui-muted);
+}
+.single .content blockquote {
+  border-left: 3px solid var(--ui-line);
+  background: var(--ui-panel);
+}
+.single .single-title {
+  font-weight: 650;
+}
+.single .content,
+.product-directory .content {
+  line-height: 1.8;
+}
+.single-title.animate__animated {
+  animation: none;
+}
+footer.footer {
+  color: var(--ui-muted);
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 4px;
+}
+@media (max-width: 680px) {
+  #header-mobile .header-title {
+    font-size: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home img,
+  .home a,
+  .button {
+    transition: none !important;
+    animation: none !important;
+  }
+}

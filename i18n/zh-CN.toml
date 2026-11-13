@@ -111,3 +111,6 @@ other = "语言"
 
 [siteLanguageShort]
 other = "中文"
+
+[siteLatest]
+other = "最新文章"

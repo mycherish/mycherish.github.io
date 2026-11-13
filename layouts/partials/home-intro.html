@@ -1,0 +1,9 @@
+{{ $profile := .Site.Params.home.profile }}
+<div class="home-profile{{ if not $profile.avatarURL }} no-avatar{{ end }}">
+  {{ with $profile.avatarURL }}<div class="home-avatar"><img src="{{ . }}" width="80" height="80" alt="{{ $.Site.Params.author.name | default "Caelum" }}" decoding="async"></div>{{ end }}
+  <div class="home-copy">
+    <h1 class="home-title">{{ $profile.title | default .Site.Params.author.name | default "Caelum" }}</h1>
+    {{ with $profile.subtitle }}<p class="home-subtitle">{{ . }}</p>{{ end }}
+    <div class="home-links"><a href="https://github.com/mycherish">GitHub ↗</a>{{ with .Site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS ↗</a>{{ end }}</div>
+  </div>
+</div>

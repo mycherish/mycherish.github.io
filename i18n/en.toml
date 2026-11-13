@@ -111,3 +111,6 @@ other = "Language"
 
 [siteLanguageShort]
 other = "EN"
+
+[siteLatest]
+other = "Latest writing"
