@@ -27,8 +27,10 @@
       <p class="eyebrow">DEEPSEEK COMPANION <span>— {{ .Params.version }}</span></p>
       <h1 id="hero-title">{{ range .Params.subtitle }}<span>{{ . }}</span>{{ end }}</h1>
       <p class="intro">{{ .Params.intro }}</p>
+      <div class="hero-bottom">
       <div class="actions"><a class="button primary" href="#install">{{ i18n "cpStart" }} <span aria-hidden="true">↗</span></a><a class="button secondary" href="{{ .Params.repository }}">{{ i18n "cpSource" }} <span aria-hidden="true">↗</span></a></div>
       <p class="support">{{ i18n "cpSupport" }}<br>{{ i18n "cpDesktop" }}</p>
+      </div>
     </section>
     <section class="showcase wrap" aria-label="{{ i18n "cpScreenshot" }}">
       <figure>{{ with .Resources.GetMatch .Params.screenshot }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.Params.screenshotAlt }}" fetchpriority="high">{{ end }}<figcaption><span>{{ i18n "cpCaption" }}</span>{{ i18n "cpEvidence" }}</figcaption></figure>

@@ -82,7 +82,7 @@ nav {
   font-size: 14px;
 }
 .hero {
-  padding-top: 48px;
+  padding-top: 32px;
   padding-bottom: 32px;
 }
 .eyebrow {
@@ -98,11 +98,11 @@ nav {
   letter-spacing: 0;
 }
 h1 {
-  font-size: clamp(36px, 4.5vw, 60px);
-  line-height: 1.17;
-  letter-spacing: -1.8px;
+  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1.25;
+  letter-spacing: -1px;
   font-weight: 600;
-  margin: 0 0 26px;
+  margin: 0 0 20px;
 }
 h1 span {
   display: block;
@@ -122,8 +122,8 @@ h1 span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
-  padding: 13px 23px;
+  gap: 18px;
+  padding: 11px 20px;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
@@ -148,7 +148,7 @@ h1 span {
 .support {
   font-size: 12px;
   color: var(--muted);
-  margin-top: 22px;
+  margin-top: 0;
   line-height: 1.9;
 }
 .showcase figure {
@@ -178,8 +178,8 @@ h1 span {
 .features {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 90px;
-  padding-block: 64px;
+  gap: 36px;
+  padding-block: 48px;
 }
 h2 {
   font-size: clamp(29px, 3.4vw, 43px);
@@ -415,5 +415,55 @@ nav {
 @media (max-width: 760px) {
   nav {
     gap: 14px;
+  }
+}
+
+/* A compact first screen; full screenshot and installation content stay intact. */
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+}
+.hero-bottom .support {
+  font-size: 13px;
+  margin: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+  line-height: 1.7;
+}
+.showcase figure {
+  box-shadow: none;
+}
+.section-heading h2 {
+  font-size: 28px;
+  letter-spacing: -0.4px;
+}
+.section-heading > p:last-child {
+  font-size: 15px;
+}
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+}
+.feature-list article {
+  padding: 20px 0;
+  gap: 12px;
+}
+.feature-list h3 {
+  font-size: 18px;
+}
+@media (max-width: 760px) {
+  .hero-bottom {
+    display: block;
+  }
+  .hero-bottom .support {
+    border: 0;
+    padding: 0;
+    margin-top: 18px;
+  }
+  .feature-list {
+    grid-template-columns: 1fr;
   }
 }

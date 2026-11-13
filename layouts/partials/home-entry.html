@@ -7,5 +7,5 @@
   </div>
   {{ $image := .Params.featuredimagepreview | default .Params.featuredimage }}
   {{ with .Resources.GetMatch "featured-image-preview*" }}{{ $image = .RelPermalink }}{{ end }}
-  {{ with $image }}<a class="entry-image" href="{{ $.RelPermalink }}" aria-label="{{ $.Title }}"><img src="{{ . }}" alt="" loading="lazy" width="200" height="128"></a>{{ end }}
+  {{ with $image }}<a class="entry-image" href="{{ $.RelPermalink }}" aria-label="{{ $.Title }}"><img src="{{ . }}" alt="" loading="lazy" width="132" height="92"></a>{{ end }}
 </article>
