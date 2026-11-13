@@ -1,0 +1,21 @@
+{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+<link rel="stylesheet" href="{{ "css/products-directory.css" | relURL }}">
+<section class="page single special product-directory" aria-labelledby="directory-title">
+  <h1 id="directory-title" class="single-title">{{ .Title }}</h1>
+  <div class="content directory-intro">{{ .Content }}</div>
+  <div class="product-grid">
+    {{ range .RegularPages.ByWeight }}
+    <article class="product-item">
+      {{ with .Params.version }}<p class="product-version">版本 {{ . }}</p>{{ end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p>{{ .Summary | plainify }}</p>
+      {{ with .Params.platformSummary }}<p class="product-platform">{{ . }}</p>{{ end }}
+      <a class="product-more" href="{{ .RelPermalink }}" aria-label="了解 {{ .Title }}">了解产品 <span aria-hidden="true">↗</span></a>
+    </article>
+    {{ else }}
+    <p>产品正在准备中。</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

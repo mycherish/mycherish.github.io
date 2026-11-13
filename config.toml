@@ -809,6 +809,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken", "
         name = ""
         url = "https://github.com/mycherish"
         title = "GitHub"
+    [[languages.zh-cn.menu.main]]
+      weight = 7
+      identifier = "products"
+      name = "产品"
+      url = "/products/"
+      title = "产品与开源项目"
     [languages.zh-cn.params]
       [languages.zh-cn.params.search]
         enable = true
