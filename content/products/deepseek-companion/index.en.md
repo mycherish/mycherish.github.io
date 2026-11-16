@@ -1,5 +1,5 @@
 ---
-title: "DeepSeek Companion"
+title: "DSH Chat Buddy"
 date: 2026-11-13T10:00:00+08:00
 draft: false
 type: "products"
@@ -9,7 +9,7 @@ subtitle:
   - "Your DeepSeek."
   - "Beside your workspace."
 intro: "Keep chatting with your own DeepSeek web account in DSH Web. Deep Think, Search, images, and conversation history, right beside your work."
-version: "0.1.0"
+version: "0.1.1"
 weight: 10
 summary: "DeepSeek web chat in DSH Web, with streaming replies, images, conversation history, and three window modes."
 platformSummary: "macOS · Supported DSH Web versions · Desktop not supported"
@@ -18,15 +18,15 @@ market: "https://mycherish.github.io/dsh-deepseek-companion/index.json"
 issues: "https://github.com/mycherish/dsh-deepseek-companion/issues"
 screenshot: "float.png"
 screenshotAlt: "Companion floating over DSH Web with the FR5_MARKET_OK test reply and message composer. The application screenshot is in Chinese."
-brandName: "Companion"
-eyebrow: "DEEPSEEK COMPANION"
+brandName: "Chat Buddy"
+eyebrow: "DSH CHAT BUDDY"
 supportLines:
   [
     "macOS · Supported DSH Web versions · Third-party open source",
     "Official Desktop is not supported yet",
   ]
 screenshotCaption: "One workspace. Three ways to chat."
-screenshotNote: "Release acceptance screenshot · Float mode · Test conversation"
+screenshotNote: "Previous-name 0.1.0 release screenshot · Test conversation"
 featureIntro: "Bring web conversations into your DSH workspace, with familiar chat controls."
 installNote: "Check your host version and browser prerequisites before installing."
 license: "MIT licensed"
@@ -37,7 +37,7 @@ closing:
   title: "Keep the conversation close."
   text: "Start with a compatible Web environment."
 installLink:
-  url: "https://www.npmjs.com/package/dsh-deepseek-companion"
+  url: "https://www.npmjs.com/package/dsh-chat-buddy"
   label: "View on npm"
 features:
   - title: "Familiar chat controls"
@@ -54,7 +54,7 @@ faq:
   - question: "Does it use my DeepSeek API balance?"
     answer: "It uses DeepSeek web chat rather than the paid API. Web account limits, site rules, and risk controls still apply. It is not an API Provider or OpenAI-compatible Gateway."
   - question: "Does it support official DSH Desktop?"
-    answer: "Not yet. Version 0.1.0 supports local DSH Web 0.1.5-rc.2 and 0.2.1-rc.2 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
+    answer: "Not yet. Version 0.1.1 supports local DSH Web 0.1.5-rc.2 and 0.2.1-rc.2 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
   - question: "Does signing in to DSH sign me in to DeepSeek?"
     answer: "No. DSH and DeepSeek web login are separate. You need your own DeepSeek web login state. Release acceptance verified chat with an existing login; the site's anonymous-access behavior prevented observing the first-login entry, so entering fresh credentials was not claimed as tested."
   - question: "Does uninstalling remove my login?"
@@ -74,7 +74,7 @@ Run `dsh --version` first. A newer host version is not automatically supported.
 Use DSH's official plugin command to install the exact published version:
 
 ```sh
-dsh plugin --profile web add dsh-deepseek-companion@0.1.0
+dsh plugin --profile web add dsh-chat-buddy@0.1.1
 ```
 
 Replace `web` with your actual Web profile name. Do not use `desktop`.
@@ -106,14 +106,18 @@ In the validated DSH Web `0.2.1-rc.2`, enable **Custom plugin markets** from the
 https://mycherish.github.io/dsh-deepseek-companion/index.json
 ```
 
-Find DeepSeek Companion `0.1.0`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for the older supported host. This is a custom market, not a listing preinstalled in the official default market.
+Find DSH Chat Buddy `0.1.1`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for the older supported host. This is a custom market, not a listing preinstalled in the official default market.
 
 ### Know the boundaries
 
-Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.0 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
+Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.1 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
 
 To uninstall, stop the corresponding DSH instance first, then run the command and restart DSH:
 
 ```sh
-dsh plugin --profile web remove dsh-deepseek-companion
+dsh plugin --profile web remove dsh-chat-buddy
 ```
+
+## Migrating from the previous name
+
+Previously DeepSeek Companion. The old `dsh-deepseek-companion@0.1.0` package remains available. Do not install both names in one profile. Save drafts and stop DSH, run `dsh plugin --profile web remove dsh-deepseek-companion`, then install `dsh-chat-buddy@0.1.1`, restart and refresh. Existing login directories and settings are retained; in-memory messages and unsent drafts are not guaranteed across restarts. The market URL and this page URL stay unchanged. Official Desktop remains unsupported.

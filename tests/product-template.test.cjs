@@ -172,9 +172,7 @@ test("existing translated Companion pages retain their product content", () => {
     for (const text of expected)
       assert(source.includes(text), `${route}: ${text}`);
     assert(
-      links(source).includes(
-        "https://www.npmjs.com/package/dsh-deepseek-companion",
-      ),
+      links(source).includes("https://www.npmjs.com/package/dsh-chat-buddy"),
     );
     assert.equal((source.match(/class="feature-list"/g) || []).length, 1);
     assert.match(
