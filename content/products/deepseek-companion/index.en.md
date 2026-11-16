@@ -9,7 +9,7 @@ subtitle:
   - "Your DeepSeek."
   - "Beside your workspace."
 intro: "Keep chatting with your own DeepSeek web account in DSH Web. Deep Think, Search, images, and conversation history, right beside your work."
-version: "0.1.2"
+version: "0.1.3"
 weight: 10
 summary: "DeepSeek web chat in DSH Web, with streaming replies, images, conversation history, and three window modes."
 platformSummary: "macOS · Supported DSH Web versions · Desktop not supported"
@@ -27,7 +27,7 @@ supportLines:
   ]
 screenshotCaption: "One workspace. Three ways to chat."
 screenshotNote: "Previous-name 0.1.0 release screenshot · Test conversation"
-featureIntro: "Bring web conversations into your DSH workspace, with familiar chat controls."
+featureIntro: "Bring web conversations into your DSH workspace. Start on demand, work quietly in the background, and show the browser only when you choose to sign in."
 installNote: "Check your host version and browser prerequisites before installing."
 license: "MIT licensed"
 disclaimer: "An independent project, not affiliated with DeepSeek."
@@ -54,9 +54,11 @@ faq:
   - question: "Does it use my DeepSeek API balance?"
     answer: "It uses DeepSeek web chat rather than the paid API. Web account limits, site rules, and risk controls still apply. It is not an API Provider or OpenAI-compatible Gateway."
   - question: "Does it support official DSH Desktop?"
-    answer: "Not yet. Version 0.1.2 supports local DSH Web 0.1.5-rc.2, 0.2.1-rc.2, and 0.2.2-rc.1 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
+    answer: "Not yet. Version 0.1.3 supports local DSH Web 0.1.5-rc.2, 0.2.1-rc.2, and 0.2.2-rc.1 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
   - question: "Does signing in to DSH sign me in to DeepSeek?"
-    answer: "No. DSH and DeepSeek web login are separate. You need your own DeepSeek web login state. For 0.1.2, the user signed in manually in an isolated Web 0.2.2-rc.1 environment, followed by chat, image, Stop, history, and stream-reconnection smoke tests. The plugin does not use your DSH account as a substitute for web login."
+    answer: "No. DSH and DeepSeek web login are separate. Choose Sign in to DeepSeek in Chat Buddy, sign in manually in the separate window, then finish signing in and return to chat. The plugin does not use your DSH account as a substitute for web login."
+  - question: "Will a browser window open when I start DSH?"
+    answer: "Not in 0.1.3. Starting DSH creates no work browser; opening Chat Buddy starts a background instance. A visible window opens only when you choose to sign in or manage your login. Finishing sign-in or closing that window returns to the background. If sign-in is incomplete, Chat Buddy keeps showing its login prompt without reopening the window automatically."
   - question: "Does uninstalling remove my login?"
     answer: "Normal plugin removal keeps the DeepSeek browser login directory. Stop the corresponding DSH instance before upgrading. Unsent drafts and Host in-memory messages are not guaranteed to survive process restarts. Do not delete your entire DSH_HOME."
   - question: "How do I report an issue?"
@@ -67,14 +69,14 @@ faq:
 
 **Supported: macOS, local DSH Web `0.1.5-rc.2` / `0.2.1-rc.2` / `0.2.2-rc.1`, and Node.js meeting both the plugin requirement (22 or later) and the selected DSH host requirements. Official Desktop is not supported yet.**
 
-Run `dsh --version` first. A newer host version is not automatically supported.
+Run `dsh --version` first. A newer host version is not automatically supported. Background startup and login switching in 0.1.3 were validated on Web `0.2.2-rc.1`. The other two fixed host versions retain their existing compatibility declarations; their full chat matrices were not repeated in this round.
 
 ### 01 · Install the plugin
 
 Use DSH's official plugin command to install the exact published version:
 
 ```sh
-dsh plugin --profile web add dsh-chat-buddy@0.1.2
+dsh plugin --profile web add dsh-chat-buddy@0.1.3
 ```
 
 Replace `web` with your actual Web profile name. Do not use `desktop`.
@@ -88,15 +90,24 @@ dsh plugin --profile web exec playwright --version
 dsh plugin --profile web exec playwright install chromium --no-shell
 ```
 
-Download time depends on your network. Do not substitute `playwright@latest`. Install and run as the same system user. If you use `PLAYWRIGHT_BROWSERS_PATH`, keep it consistent for installation and runtime.
+Download time depends on your network. Do not substitute `playwright@latest`. Version 0.1.3 uses the same full Chromium browser for background work and visible sign-in, without a separate Headless Shell installation. Install and run as the same system user. If you use `PLAYWRIGHT_BROWSERS_PATH`, keep it consistent for installation and runtime.
 
-### 03 · Open Companion
+### 03 · Open Chat Buddy
 
 ```sh
 dsh --profile web --no-open
 ```
 
-Open the local address printed by DSH, complete the host's initial onboarding, and open Companion from the sidebar. Follow its prompts to open the separate DeepSeek web page and handle your own login, then return to Companion. You do not need to configure a DSH API key for this plugin.
+Open the local address printed by DSH and complete the host's initial onboarding. Starting DSH creates no work browser. You do not need to configure a DSH API key for Chat Buddy.
+
+The plugin currently uses Chinese control labels; the exact labels are included below.
+
+1. Open **快速聊天** (Quick chat) in the sidebar. Only then does Chat Buddy prepare its background web session.
+2. If you are signed out, choose **登录 DeepSeek** (Sign in to DeepSeek) and sign in manually in the separate window.
+3. Return to Chat Buddy and choose **完成登录，返回聊天** (Finish signing in and return to chat). The visible window closes and the background instance takes over. Closing the sign-in window also returns to the background; incomplete sign-in leaves the login prompt visible in Chat Buddy.
+4. Use **管理登录** (Manage login) when needed. Finish any send or recovery operation and send or remove image drafts before switching modes.
+
+Closing the Chat Buddy panel keeps its background instance running; exiting the corresponding DSH host releases the work browser.
 
 ### Install through a custom market
 
@@ -106,11 +117,11 @@ In the validated DSH Web `0.2.1-rc.2`, enable **Custom plugin markets** from the
 https://mycherish.github.io/dsh-deepseek-companion/index.json
 ```
 
-Find DSH Chat Buddy `0.1.2`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for other supported hosts. The 0.2.2-rc.1 acceptance used the official CLI installer; the Discover UI flow was not repeated for this host. This is a custom market, not a listing preinstalled in the official default market.
+Find DSH Chat Buddy `0.1.3`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for other supported hosts. The Discover entry follows the earlier Web 0.2.1-rc.2 acceptance. This 0.1.3 round used the official CLI installer on Web 0.2.2-rc.1 and verified the public market index; the Discover installation flow was not repeated. This is a custom market, not a listing preinstalled in the official default market.
 
 ### Know the boundaries
 
-Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.2 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
+Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.3 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
 
 To uninstall, stop the corresponding DSH instance first, then run the command and restart DSH:
 
@@ -120,4 +131,4 @@ dsh plugin --profile web remove dsh-chat-buddy
 
 ## Migrating from the previous name
 
-Previously DeepSeek Companion. The old `dsh-deepseek-companion@0.1.0` package remains available. Do not install both names in one profile. Save drafts and stop DSH, run `dsh plugin --profile web remove dsh-deepseek-companion`, then install `dsh-chat-buddy@0.1.2`, restart and refresh. Existing login directories and settings are retained; in-memory messages and unsent drafts are not guaranteed across restarts. The market URL and this page URL stay unchanged. Official Desktop remains unsupported.
+Previously DeepSeek Companion. The old `dsh-deepseek-companion@0.1.0` package remains available. Do not install both names in one profile. Save drafts and stop DSH, run `dsh plugin --profile web remove dsh-deepseek-companion`, then install `dsh-chat-buddy@0.1.3`, restart and refresh. Existing login directories and settings are retained; in-memory messages and unsent drafts are not guaranteed across restarts. The market URL and this page URL stay unchanged. Official Desktop remains unsupported.
