@@ -9,7 +9,7 @@ subtitle:
   - "你的 DeepSeek，"
   - "就在工作台旁边。"
 intro: "用自己的 DeepSeek 网页账号，在 DSH Web 中继续对话。深度思考、搜索、图片与历史会话，都可以在熟悉的工作台里完成。"
-version: "0.1.1"
+version: "0.1.2"
 weight: 10
 summary: "在 DSH Web 中使用自己的 DeepSeek 网页账号，支持流式聊天、图片、历史与三种窗口。"
 platformSummary: "macOS · 指定版本 DSH Web · Desktop 暂未兼容"
@@ -51,9 +51,9 @@ faq:
   - question: "会消耗 DeepSeek API 余额吗？"
     answer: "插件使用 DeepSeek 网页聊天，不调用付费 API；使用仍受网页账号额度、站点规则和风控限制。它不是 API Provider 或 OpenAI-compatible Gateway。"
   - question: "支持官方 DSH Desktop 吗？"
-    answer: "目前不支持。0.1.1 只声明兼容 macOS 上的本地 DSH Web 0.1.5-rc.2 和 0.2.1-rc.2；其它宿主版本、操作系统、浏览器和远程无界面部署尚未验收。"
+    answer: "目前不支持。0.1.2 只声明兼容 macOS 上的本地 DSH Web 0.1.5-rc.2、0.2.1-rc.2 和 0.2.2-rc.1；其它宿主版本、操作系统、浏览器和远程无界面部署尚未验收。"
   - question: "登录 DSH 后就能直接使用吗？"
-    answer: "DSH 登录与 DeepSeek 网页登录是两套状态。首次使用需要自己的 DeepSeek 网页登录状态。发布验收验证了已有登录状态下的聊天；站点首次登录入口因匿名访问行为未被观察到，不宣称从零输入凭据登录已实测通过。"
+    answer: "DSH 登录与 DeepSeek 网页登录是两套状态。首次使用需要自己的 DeepSeek 网页登录状态。0.1.2 已在隔离的 Web 0.2.2-rc.1 环境由用户手动登录，并完成聊天、图片、Stop、历史和断流重连烟测。插件不会取得 DSH 账号来代替网页登录。"
   - question: "卸载会删除登录状态吗？"
     answer: "普通插件卸载不删除 DeepSeek 浏览器登录目录。升级前停止对应 DSH 实例；未发送草稿和 Host 内存消息不承诺跨进程保留。不要手工删除整个 DSH_HOME。"
   - question: "遇到问题怎么反馈？"
@@ -62,7 +62,7 @@ faq:
 
 ## 准备好，再开始
 
-**当前支持 macOS、本地 DSH Web `0.1.5-rc.2` / `0.2.1-rc.2`，Node.js 22 或以上。官方 Desktop 暂未兼容。**
+**当前支持 macOS、本地 DSH Web `0.1.5-rc.2` / `0.2.1-rc.2` / `0.2.2-rc.1`，插件要求 Node.js 22 或以上，同时需满足所选 DSH 宿主自身的 Node.js 要求。官方 Desktop 暂未兼容。**
 
 先用 `dsh --version` 检查宿主版本。不要跳过兼容范围，也不要直接把最新宿主视为已支持。
 
@@ -71,7 +71,7 @@ faq:
 通过 DSH 官方插件命令，安装已公开发布的确切版本：
 
 ```sh
-dsh plugin --profile web add dsh-chat-buddy@0.1.1
+dsh plugin --profile web add dsh-chat-buddy@0.1.2
 ```
 
 将 `web` 替换为你实际使用的 Web profile 名称。不要填 `desktop`。
@@ -103,7 +103,7 @@ dsh --profile web --no-open
 https://mycherish.github.io/dsh-deepseek-companion/index.json
 ```
 
-选择「DSH Chat Buddy」`0.1.1`，核对来源并确认安装、启用；浏览器前置条件仍需满足。旧版保留上面的命令行安装路径。这是自定义市场，不是官方默认市场预置插件。
+选择「DSH Chat Buddy」`0.1.2`，核对来源并确认安装、启用；浏览器前置条件仍需满足。其它已支持宿主可使用上面的命令行安装路径；本轮 0.2.2-rc.1 验收采用官方命令行安装，未重做 Discover 界面流程。这是自定义市场，不是官方默认市场预置插件。
 
 ### 使用前了解的边界
 
@@ -117,4 +117,4 @@ dsh plugin --profile web remove dsh-chat-buddy
 
 ## 从旧名称迁移
 
-原名 DeepSeek Companion，旧包 `dsh-deepseek-companion@0.1.0` 保留。新旧包不能在同一 profile 并装。先保存草稿并停止 DSH，执行 `dsh plugin --profile web remove dsh-deepseek-companion`，再安装 `dsh-chat-buddy@0.1.1`、重启并刷新界面。原登录目录和设置沿用；内存消息和未发送草稿不承诺跨进程保留。原市场索引与本页地址不变，官方 Desktop 仍未兼容。
+原名 DeepSeek Companion，旧包 `dsh-deepseek-companion@0.1.0` 保留。新旧包不能在同一 profile 并装。先保存草稿并停止 DSH，执行 `dsh plugin --profile web remove dsh-deepseek-companion`，再安装 `dsh-chat-buddy@0.1.2`、重启并刷新界面。原登录目录和设置沿用；内存消息和未发送草稿不承诺跨进程保留。原市场索引与本页地址不变，官方 Desktop 仍未兼容。

@@ -9,7 +9,7 @@ subtitle:
   - "Your DeepSeek."
   - "Beside your workspace."
 intro: "Keep chatting with your own DeepSeek web account in DSH Web. Deep Think, Search, images, and conversation history, right beside your work."
-version: "0.1.1"
+version: "0.1.2"
 weight: 10
 summary: "DeepSeek web chat in DSH Web, with streaming replies, images, conversation history, and three window modes."
 platformSummary: "macOS · Supported DSH Web versions · Desktop not supported"
@@ -54,9 +54,9 @@ faq:
   - question: "Does it use my DeepSeek API balance?"
     answer: "It uses DeepSeek web chat rather than the paid API. Web account limits, site rules, and risk controls still apply. It is not an API Provider or OpenAI-compatible Gateway."
   - question: "Does it support official DSH Desktop?"
-    answer: "Not yet. Version 0.1.1 supports local DSH Web 0.1.5-rc.2 and 0.2.1-rc.2 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
+    answer: "Not yet. Version 0.1.2 supports local DSH Web 0.1.5-rc.2, 0.2.1-rc.2, and 0.2.2-rc.1 on macOS. Other host versions, operating systems, browsers, and remote headless deployments have not been validated."
   - question: "Does signing in to DSH sign me in to DeepSeek?"
-    answer: "No. DSH and DeepSeek web login are separate. You need your own DeepSeek web login state. Release acceptance verified chat with an existing login; the site's anonymous-access behavior prevented observing the first-login entry, so entering fresh credentials was not claimed as tested."
+    answer: "No. DSH and DeepSeek web login are separate. You need your own DeepSeek web login state. For 0.1.2, the user signed in manually in an isolated Web 0.2.2-rc.1 environment, followed by chat, image, Stop, history, and stream-reconnection smoke tests. The plugin does not use your DSH account as a substitute for web login."
   - question: "Does uninstalling remove my login?"
     answer: "Normal plugin removal keeps the DeepSeek browser login directory. Stop the corresponding DSH instance before upgrading. Unsent drafts and Host in-memory messages are not guaranteed to survive process restarts. Do not delete your entire DSH_HOME."
   - question: "How do I report an issue?"
@@ -65,7 +65,7 @@ faq:
 
 ## Check before you start
 
-**Supported: macOS, local DSH Web `0.1.5-rc.2` / `0.2.1-rc.2`, and Node.js 22 or later. Official Desktop is not supported yet.**
+**Supported: macOS, local DSH Web `0.1.5-rc.2` / `0.2.1-rc.2` / `0.2.2-rc.1`, and Node.js meeting both the plugin requirement (22 or later) and the selected DSH host requirements. Official Desktop is not supported yet.**
 
 Run `dsh --version` first. A newer host version is not automatically supported.
 
@@ -74,7 +74,7 @@ Run `dsh --version` first. A newer host version is not automatically supported.
 Use DSH's official plugin command to install the exact published version:
 
 ```sh
-dsh plugin --profile web add dsh-chat-buddy@0.1.1
+dsh plugin --profile web add dsh-chat-buddy@0.1.2
 ```
 
 Replace `web` with your actual Web profile name. Do not use `desktop`.
@@ -106,11 +106,11 @@ In the validated DSH Web `0.2.1-rc.2`, enable **Custom plugin markets** from the
 https://mycherish.github.io/dsh-deepseek-companion/index.json
 ```
 
-Find DSH Chat Buddy `0.1.1`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for the older supported host. This is a custom market, not a listing preinstalled in the official default market.
+Find DSH Chat Buddy `0.1.2`, verify its source, confirm installation, and enable it. The Chromium prerequisite still applies. Use the command-line path above for other supported hosts. The 0.2.2-rc.1 acceptance used the official CLI installer; the Discover UI flow was not repeated for this host. This is a custom market, not a listing preinstalled in the official default market.
 
 ### Know the boundaries
 
-Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.1 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
+Search links are created only for sources that can be accurately mapped. Very fast consecutive sends with an empty parent anchor and branching history safely fail instead of guessing the conversation. Version 0.1.2 does not include document attachments, multiple accounts, active heartbeat detection, Host message persistence, Proxy, or Handoff.
 
 To uninstall, stop the corresponding DSH instance first, then run the command and restart DSH:
 
@@ -120,4 +120,4 @@ dsh plugin --profile web remove dsh-chat-buddy
 
 ## Migrating from the previous name
 
-Previously DeepSeek Companion. The old `dsh-deepseek-companion@0.1.0` package remains available. Do not install both names in one profile. Save drafts and stop DSH, run `dsh plugin --profile web remove dsh-deepseek-companion`, then install `dsh-chat-buddy@0.1.1`, restart and refresh. Existing login directories and settings are retained; in-memory messages and unsent drafts are not guaranteed across restarts. The market URL and this page URL stay unchanged. Official Desktop remains unsupported.
+Previously DeepSeek Companion. The old `dsh-deepseek-companion@0.1.0` package remains available. Do not install both names in one profile. Save drafts and stop DSH, run `dsh plugin --profile web remove dsh-deepseek-companion`, then install `dsh-chat-buddy@0.1.2`, restart and refresh. Existing login directories and settings are retained; in-memory messages and unsent drafts are not guaranteed across restarts. The market URL and this page URL stay unchanged. Official Desktop remains unsupported.
